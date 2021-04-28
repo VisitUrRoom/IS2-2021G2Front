@@ -1,0 +1,218 @@
+<html>
+  
+ <!-- barra de navegacion -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   <a class="navbar-brand" style="color:white;">Visit Ur Room</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarColor02">
+     <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link"  (click)="onOpenModal(null, 'add')">Agregar Habitación <span class="sr-only">(current)</span></a>
+        </li>
+     </ul>
+     <form class="form-inline my-2 my-lg-0">
+      <input type="search" (ngModelChange)="searchRooms(key.value)" #key="ngModel" ngModel
+       name="key" id="searchName" class="form-control mr-sm-2" placeholder="Buscar..." required>
+   </form>
+  </div>
+  <a id="app-whatsapp" target="_blanck" href="https://api.whatsapp.com/send?phone=573132010691&amp;text=Hola!&nbsp;Estoy&nbsp;Interesad@&nbsp;">
+   <i class="fa fa-whatsapp fa-3x" style="color: chartreuse;"></i>
+</a>
+</nav>
+
+
+<body>
+  
+ <!-- Container que lista las habitaciones de la base de datos -->
+<div class="Container" id= "main-container">
+
+    <div class="row">
+        <div class="col-md-6 col-xl-6">
+          
+            <div *ngFor="let room of rooms" class="card m-b-30">
+              
+                <div class="card-body row">
+                  <div >
+                    <a href=""><img src="{{room?.imageUrl}}" alt="" class="img-fluid"></a>
+                </div>
+                    <div class="col-6 card-title align-self-center mb-0">
+                        <h5>{{room?.name}}</h5>
+                        <a (click)="onOpenModal(room, 'know')" class="btn btn-primary-outline" data-placement="top" data-toggle="tooltip" data-original-title="Know"><i class="fa fa-map-marker" aria-hidden="true"></i> Conoce Más</a>
+
+                    </div>
+                    <div class="card-body">
+                      <div class="float-right btn-group btn-group-sm">
+                          <a (click)="onOpenModal(room, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                          <a (click)="onOpenModal(room, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                      </div>
+                  </div>
+                </div>
+                
+  <!-- Conoce más room Modal -->
+  <div  class="modal fade" id="knowRoomModal" tabindex="-1" aria-labelledby="knowRoomModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="knowModelLabel">Conoce Más</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+          <ul class="list-group list-group-flush">
+            <a href=""><img src="{{room?.imageUrl}}" alt="" class="img-fluid"></a>
+            <li class="list-group-item"><i class="fa fa-user float-right"></i>Nombre : {{room?.name}}</li>
+            <li class="list-group-item"><i class="fa fa-map-marker float-right"></i>Ubicación : {{room?.location}}</li>
+            <li class="list-group-item"><i class="fa fa-money float-right"></i>Valor: $ {{room?.price}}</li>
+            <li class="list-group-item"><i class="fa fa-phone float-right"></i>Teléfono : {{room?.number}}</li>
+            <li class="list-group-item"><i class="fa fa-book float-right"></i>Descripción : {{room?.description}}</li>
+        </ul>
+        <div>
+        <ul class="social-links list-inline mb-0">
+          <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
+          <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
+          <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
+      </ul>
+       </div>
+         </div>
+      </div>
+   </div>
+  </div>
+</div>
+</div>
+   
+<div class="col-md-6">Mapa va aca
+  
+ 
+</div>
+</div>
+</div>
+
+
+
+<!-- Add Room Modal -->
+<div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="addRoomModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h5 class="modal-title" id="addRoomModalLabel">Agregar Habitación</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+       </div>
+       <div class="modal-body">
+          <form #addForm="ngForm" (ngSubmit)="onAddRoom(addForm)">
+          <div class="form-group">
+             <label for="name">Nombre</label>
+             <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="description">Descripción</label>
+            <input type="text" ngModel name="description" class="form-control" id="description" placeholder="Descripción" required>
+         </div>
+          <div class="form-group">
+             <label for="price">Precio</label>
+             <input type="text" ngModel name="price" class="form-control" id="price" placeholder="Precio" required>
+          </div>
+          <div class="form-group">
+             <label for="number">Teléfono</label>
+             <input type="text" ngModel name="number" class="form-control" id="number" placeholder="Teléfono" required>
+          </div>
+          <div class="form-group">
+             <label for="location">Ubicación</label>
+             <input type="text" ngModel name="location" class="form-control" id="location" placeholder="Ubicación" required>
+          </div>
+          <div class="form-group">
+             <label for="phone">Imagen</label>
+             <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
+          </div>
+          <div class="modal-footer">
+             <button type="button" id="add-room-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+             <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Guardar cambios</button>
+          </div>
+          </form>
+       </div>
+    </div>
+  </div>
+  </div>
+
+<!-- edit room Modal -->
+<div class="modal fade" id="updateRoomModal" tabindex="-1" role="dialog" aria-labelledby="roomEditModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h5 class="modal-title" id="updateEmployeeModalLabel">Editar Habitación " {{editRoom?.name}} "</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+       </div>
+       <div class="modal-body">
+          <form #editForm="ngForm">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" ngModel="{{editRoom?.name}}" name="name" class="form-control" id="name" placeholder="Nombre" required>
+           </div>
+           <input type="hidden" ngModel="{{editRoom?.id}}" name="id" class="form-control" id="id" placeholder="Nombre">
+           <input type="hidden" ngModel="{{editRoom?.roomCode}}" name="roomCode" class="form-control" id="roomCode" placeholder="Nombre">
+
+           <div class="form-group">
+            <label for="description">Descripción</label>
+            <input type="text" ngModel="{{editRoom?.description}}" name="description" class="form-control" id="description" placeholder="Descripción" required>
+         </div>
+           <div class="form-group">
+              <label for="price">Precio</label>
+              <input type="text" ngModel="{{editRoom?.price}}" name="price" class="form-control" id="price" placeholder="Precio" required>
+           </div>
+           <div class="form-group">
+              <label for="number">Teléfono</label>
+              <input type="text" ngModel="{{editRoom?.number}}" name="number" class="form-control" id="number" placeholder="Teléfono" required>
+           </div>
+           <div class="form-group">
+              <label for="location">Ubicación</label>
+              <input type="text" ngModel="{{editRoom?.location}}" name="location" class="form-control" id="location" placeholder="Ubicación" required>
+           </div>
+           <div class="form-group">
+              <label for="phone">Imagen</label>
+              <input type="text" ngModel="{{editRoom?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
+           </div>
+             <div class="modal-footer">
+                <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cerrar</button>
+                <button (click)="onUpdateRoom(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Guardar cambios</button>
+             </div>
+          </form>
+       </div>
+    </div>
+ </div>
+</div>
+
+<!-- delete room Modal -->
+<div class="modal fade" id="deleteRoomModal" tabindex="-1" aria-labelledby="deleteRoomModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h5 class="modal-title" id="deleteModelLabel">Eliminar una Habitación</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+       </div>
+       <div class="modal-body">
+          <p>¿ Estas seguro de querer borrar " {{deleteRoom?.name}} "?</p>
+          <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+             <button (click)="onDeleteRoom(deleteRoom?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+          </div>
+       </div>
+    </div>
+ </div>
+</div>
+
+
+</body>
+
+</html>
+
+
+
+
