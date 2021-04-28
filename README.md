@@ -12,6 +12,12 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
+Install components in clone directory
+
+npm i @angular-devkit/build-angular
+npm i @agm/core
+npm i @angular/google-maps
+
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
