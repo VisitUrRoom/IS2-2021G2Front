@@ -12,6 +12,7 @@ import { RoomService } from './room.service';
 })
 export class AppComponent implements OnInit{
   public rooms: Room[];
+  public knowRoom: Room;
   public editRoom: Room;
   public deleteRoom: Room;
 
@@ -243,6 +244,7 @@ export class AppComponent implements OnInit{
       button.setAttribute('data-target','#deleteRoomModal'); 
     }
     if (mode === 'know'){
+      this.knowRoom = room;
       button.setAttribute('data-target','#knowRoomModal'); 
     }
 

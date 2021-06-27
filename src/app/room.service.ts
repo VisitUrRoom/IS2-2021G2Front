@@ -13,15 +13,15 @@ export class RoomService {
   constructor(private http: HttpClient) { }
 
   public getRooms(): Observable<Room[]>{
-    return this.http.get<Room[]>(`${this.apiServerUrl}/room/all`)
+    return this.http.get<Room[]>(`${this.apiServerUrl}/api/rooms/lista`)
   }
 
   public addRoom(room:Room): Observable<Room>{
-    return this.http.post<Room>(`${this.apiServerUrl}/room/add`, room);
+    return this.http.post<Room>(`${this.apiServerUrl}/api/rooms`, room);
   }
 
   public updateRoom(room:Room): Observable<Room>{
-    return this.http.put<Room>(`${this.apiServerUrl}/room/update`, room);
+    return this.http.put<Room>(`${this.apiServerUrl}/api/rooms/${room.id}`, room);
   }
 
   public deleteRoom(roomId:number): Observable<void>{
