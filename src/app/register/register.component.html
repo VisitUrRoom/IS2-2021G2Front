@@ -1,0 +1,129 @@
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="/assets/img/Favicon.png" alt="" width="72" height="57">
+      <h2>Registro de usuarios</h2>
+      <p class="lead">Regsitrate en nuestra plataforma para poder publicar rooms.</p>
+    </div>
+
+    <div class="row g-5">
+      <div class="col-sm-12 col-md-9 col-lg-9 mx-auto">
+        <h4 class="mb-3">Formulario</h4>
+        <form class="needs-validation" *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()"
+          #f="ngForm" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-12">
+              <label for="firstName" class="form-label">Nombre o Razon Social</label>
+              <input type="text" class="form-control" id="firstName" name="firstName" #firstName="ngModel" [(ngModel)]="form.firstName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Por favor ingrese un nombre.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="tipopersona" class="form-label">Tipo de persona</label>
+              <select class="form-select" id="tipopersona" name="tipopersona" #tipopersona="ngModel" [(ngModel)]="form.tipopersona" required>
+                <option value="">Elegir...</option>
+                <option value="natural">Persona Natural</option>
+                <option value="juridica">Persona Juridica</option>
+              </select>
+              <div class="invalid-feedback">
+                Por favor, seleccione un tipo de persona válido.
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label for="userid" class="form-label">Cedula o NIT</label>
+              <input type="number" class="form-control" #userid="ngModel" [(ngModel)]="form.userid" name="name" id="userid" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Por favor ingrese una cedula o NIT.
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <label for="username" class="form-label">Nombre de usuario</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" name="username" [(ngModel)]="form.username" minlength="3"
+                  maxlength="20" #username="ngModel" id="username" placeholder="nombre de usuario" required>
+                <div class="alert-danger" *ngIf="username.errors && f.submitted">
+                  <div *ngIf="username.errors.required">Nombre de usuaro es requerido</div>
+                  <div *ngIf="username.errors.minlength">El nombre de usuario debe tener al menos 3 caracteres</div>
+                  <div *ngIf="username.errors.maxlength">El nombre de usuario debe tener como máximo 20 caracteres</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="password" class="form-label">Contraseña</label>
+              <div class="input-group form-group pass_show">
+                <input type="password" class="form-control pwds" name="password" [(ngModel)]="form.password"
+                  minlength="5" #password="ngModel"  id="pwdId" pattern="[A-Za-z0-9]{5,99}" required>
+                  <div id="cPwdValid" class="valid-feedback"></div>
+                  <div id="cPwdInvalid" class="invalid-feedback">Ingresa una contraseña</div>
+                <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                  
+                  <div *ngIf="password.errors.required">La contraseña es requerida</div>
+                  <div *ngIf="password.errors.minlength">La contraseña debe tener al menos 5 caracteres</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="confpassword" class="form-label">Confirmar contraseña</label>
+              <div class="input-group form-group pass_show">
+                <input type="password" class="form-control pwds" name="password2" placeholder="Confirmar contraseña" id="cPwdId" pattern="[A-Za-z0-9]{5,99}" required>
+                <div id="cPwdValid" class="valid-feedback"></div>
+                <div id="cPwdInvalid" class="invalid-feedback">La contraseña debe tener al menos 5 caracteres</div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="form.email" placeholder="you@example.com" required>
+              <div class="invalid-feedback">
+                Ingrese un correo electrónico valido.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Direccion</label>
+              <input type="text" class="form-control" id="address" name="address" #address="ngModel" [(ngModel)]="form.address" placeholder="Calle/Carrera #XX-XX" required>
+              <div class="invalid-feedback">
+                Ingrese una dirección valida.
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="city" class="form-label">Ciudad</label>
+              <input type="text" class="form-control" id="city" name="city" #city="ngModel" [(ngModel)]="form.city" placeholder="Ciudad">
+              <div class="invalid-feedback">
+                Ingrese su ciudad de residencia.
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="neighborhood" class="form-label">Barrio</label>
+              <input type="text" class="form-control" id="neighborhood" name="neighborhood" #neighborhood="ngModel" [(ngModel)]="form.neighborhood" placeholder="Barrio">
+              <div class="invalid-feedback">
+                Ingrese su barrio o localidad.
+              </div>
+            </div>
+
+
+            <hr class="my-3">
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit" id="submitBtn">Registrar</button>
+          </div>
+        </form>
+        <hr class="my-3">
+        <div class="alert alert-success" role="alert" *ngIf="isSuccessful">
+          <p>{{successfulMessage}}</p>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="isSignUpFailed">
+          <p>{{errorMessage}}</p>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  

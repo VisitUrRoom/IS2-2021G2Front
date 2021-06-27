@@ -1,0 +1,87 @@
+
+<style type="text/css">
+	html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
+
+<main class="form-signin">
+  <form *ngIf="!isLoggedIn" name="form"  (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"   novalidate>
+    <img class="mb-4" src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Iniciar sesión</h1>
+
+    <div class="form-floating mb-10">
+      <input type="text" class="form-control"   name="username"  [(ngModel)]="form.username"
+            required  #username="ngModel" id="floatingInput" placeholder="username">
+			<div class="alert alert-danger" role="alert" *ngIf="username.errors && f.submitted"          >
+          ¡Se requiere nombre de usuario!
+          </div>
+      <label for="floatingInput">Username</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="4"  #password="ngModel" id="floatingPassword" placeholder="Password"/>
+	  <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+            <div *ngIf="password.errors.required">La contraseña es requerida</div>
+            <div *ngIf="password.errors.minlength">
+              La contraseña debe tener al menos 6 caracteres
+            </div>
+          </div>
+		  <label for="floatingPassword">Contraseña</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar sesión</button>
+	<div class="form-group">
+          <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+            Error de inicio de sesion: {{ errorMessage }}
+          </div>
+        </div>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+  </form>
+  <div class="alert alert-success" *ngIf="isLoggedIn">
+    Conectado como {{ roles }}.
+  </div>
+</main>
+
+
+
