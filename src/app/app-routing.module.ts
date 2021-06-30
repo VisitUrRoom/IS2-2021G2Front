@@ -10,16 +10,28 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { ContactoComponent } from './contacto/contacto.component';
 
+import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component';
+
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+   //Site routes goes here 
+   { 
+      path: '', 
+      component: SiteLayoutComponent,
+      children: [
+        { path: '', component: HomeComponent, pathMatch: 'full'},
+        { path: 'home', component: HomeComponent },
+        { path: 'profile', component: ProfileComponent },
+        { path: 'user', component: BoardUserComponent },
+        { path: 'mod', component: BoardModeratorComponent },
+        { path: 'admin', component: BoardAdminComponent }
+        
+      ]
+  },
+
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'user', component: BoardUserComponent },
-  { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin', component: BoardAdminComponent },
   { path: 'contacto', component: ContactoComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
