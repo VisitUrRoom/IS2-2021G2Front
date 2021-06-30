@@ -22,12 +22,12 @@
             </div>
             
             <div class="header-top-right float-right">
-              <a *ngIf="isLoggedIn" class="header-top-button" href="/user" routerLink="user">Escritorio</a>
-              <a *ngIf="isLoggedIn" class="header-top-button" href="/profile" routerLink="profile">{{ username }}</a>
+              <a *ngIf="isLoggedIn" class="header-top-button" routerLink="/profile">Escritorio</a>
+              <a *ngIf="isLoggedIn" class="header-top-button" routerLink="/profile" routerLink="profile">{{ username }}</a>
   
               <a *ngIf="isLoggedIn" class="header-top-button" href (click)="logout()">Cerrar sesión</a>
-              <a *ngIf="!isLoggedIn" href="/login" class="header-top-button" routerLink="login"><i class="lni-lock"></i> iniciar Sesión</a> |
-              <a *ngIf="!isLoggedIn"href="/register" class="header-top-button" outerLink="register"><i class="lni-pencil"></i> Registrarse</a>
+              <a *ngIf="!isLoggedIn" class="header-top-button" routerLink="/login"><i class="lni-lock"></i> iniciar Sesión</a> |
+              <a *ngIf="!isLoggedIn" href="/register" class="header-top-button" outerLink="register"><i class="lni-pencil"></i> Registrarse</a>
             </div>
           </div>
         </div>
@@ -49,9 +49,9 @@
   
         <div class="collapse navbar-collapse" id="main-navbar">
           <ul class="navbar-nav mr-auto w-100 justify-content-center">
-            <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="/home">
-                Inicio <i class="fa fa-angle-down"></i>
+            <li class="nav-item dropdown">
+              <a class="nav-link" routerLink="/home">
+                Inicio
               </a>
             </li>
             <li class="nav-item dropdown">
@@ -87,7 +87,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">
+              <a class="nav-link" routerLink="/contacto">
                 Contacto
               </a>
             </li>
@@ -106,7 +106,7 @@
       <!-- Mobile Menu Start -->
       <ul class="mobile-menu">
         <li>
-          <a class="active" href="index.html">
+          <a routerLink="/home">
           Inicio
           </a>
         </li>
@@ -141,7 +141,7 @@
           </ul>
         </li>
         <li>
-          <a href="contact.html">
+          <a routerLink="/contacto">
           Contacto
           </a>
         </li>

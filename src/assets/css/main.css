@@ -436,7 +436,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 }
 
 #page-banner-area {
-  background: url(../img/background/banner.jpg) no-repeat;
+  background: url(../img/slider-bg3.jpg) no-repeat;
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -923,7 +923,7 @@ a.back-to-top:hover, a.back-to-top:focus {
 intro section style
 ====================================================*/
 .section-intro {
-  background: url("../img/background/bg-intro.jpg") center center no-repeat;
+  background: url("../img/slider-bg4.jpg") center center no-repeat;
   background-size: cover;
   color: #fff;
   position: relative;
@@ -2303,7 +2303,7 @@ Property wrapper Style
   background-repeat: no-repeat;
   border: none;
   margin: 0;
-  background: rgba(0, 0, 0, 0.04) url(../img/avatar/user-bg.jpg) top left repeat;
+  background: rgba(0, 0, 0, 0.04) url(../img/bg_rent.jpg) top left repeat;
   background-size: cover;
   color: #ffffff;
 }
