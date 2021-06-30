@@ -16,8 +16,11 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
 import { APP_BASE_HREF } from '@angular/common';
-import { FooterComponent } from './footer/footer.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { SiteHeaderComponent } from './_layout/site-header/site-header.component';
+import { SiteFooterComponent } from './_layout/site-footer/site-footer.component';
+import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component';
+
 
 
 @NgModule({
@@ -30,8 +33,10 @@ import { ContactoComponent } from './contacto/contacto.component';
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    FooterComponent,
-    ContactoComponent
+    ContactoComponent,
+    SiteHeaderComponent,
+    SiteFooterComponent,
+    SiteLayoutComponent,
   ],
   imports: [
     BrowserModule,
