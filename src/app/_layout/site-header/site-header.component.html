@@ -25,7 +25,7 @@
               <a *ngIf="isLoggedIn" class="header-top-button" routerLink="/profile">Escritorio</a>
               <a *ngIf="isLoggedIn" class="header-top-button" routerLink="/profile" routerLink="profile">{{ username }}</a>
   
-              <a *ngIf="isLoggedIn" class="header-top-button" href (click)="logout()">Cerrar sesión</a>
+              <a *ngIf="isLoggedIn" class="header-top-button" href (click)="logout()">Logout</a>
               <a *ngIf="!isLoggedIn" class="header-top-button" routerLink="/login"><i class="lni-lock"></i> iniciar Sesión</a> |
               <a *ngIf="!isLoggedIn" href="/register" class="header-top-button" outerLink="register"><i class="lni-pencil"></i> Registrarse</a>
             </div>
@@ -64,28 +64,7 @@
                 <a class="dropdown-item" href="listing-map.html">List with Google Map</a>
               </div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Property <i class="fa fa-angle-down"></i>
-              </a>
-               <div class="dropdown-menu">
-                <a class="dropdown-item" href="property.html">Default- Variation</a>
-                <a class="dropdown-item" href="single-property.html">Single Property</a>
-                <a class="dropdown-item" href="full-gallery.html">Full Width Gallery</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Pages <i class="fa fa-angle-down"></i>
-              </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="about.html">About Us</a>
-                <a class="dropdown-item" href="agents.html">Agents</a>
-                <a class="dropdown-item" href="rent.html">For Rent</a>
-                <a class="dropdown-item" href="sale.html">For Sale</a>
-                <a class="dropdown-item" href="submit-property.html">Submission Form</a>
-              </div>
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link" routerLink="/contacto">
                 Contacto
@@ -118,26 +97,6 @@
             <li><a href="listing.html">Simple Listing</a></li>
             <li><a href="grid-listing.html">Grid Listing</a></li>
             <li><a href="listing-map.html">List with Google Map</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Property</a>
-           <ul class="dropdown">
-            <li><a href="property.html">Default- Variation</a></li>
-            <li><a href="single-property.html">Single Property</a></li>
-            <li><a href="full-gallery.html">Full Width Gallery</a></li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Pages</a>
-          <ul class="dropdown">
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="agents.html">Agents</a></li>
-            <li><a href="rent.html">For Rent</a></li>
-            <li><a href="sale.html">For Sale</a></li>
-            <li><a href="pricing.html">Pricing Tables</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="submit-property.html">Submission Form</a></li>
           </ul>
         </li>
         <li>

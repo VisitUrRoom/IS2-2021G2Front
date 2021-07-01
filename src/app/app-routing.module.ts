@@ -23,14 +23,14 @@ const routes: Routes = [
         { path: 'profile', component: ProfileComponent },
         { path: 'user', component: BoardUserComponent },
         { path: 'mod', component: BoardModeratorComponent },
-        { path: 'admin', component: BoardAdminComponent }
+        { path: 'admin', component: BoardAdminComponent },
+        { path: 'contacto', component: ContactoComponent }
         
       ]
   },
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'contacto', component: ContactoComponent },
   { path: '**', redirectTo: '' }
 ];
 

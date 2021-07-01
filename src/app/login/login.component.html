@@ -13,7 +13,7 @@
     align-items: center;
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #f5f5f5;
+    background-color: #f5f5f5 !important;
   }
 
   .form-signin {
@@ -61,7 +61,7 @@
 
 
   <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
-    <img class="mb-4" src="/assets/img/favicon.png" alt="" width="72" height="57">
+    <img class="mb-4" src="/assets/img/Favicon.png" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Iniciar sesión</h1>
 
     <div class="form-floating mb-10">
@@ -86,7 +86,7 @@
 
     <div class="checkbox mb-3">
       <label>
-        <input type="checkbox" value="remember-me"> Remember me
+        <input type="checkbox" value="remember-me"> Recordarme
       </label>
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar sesión</button>
