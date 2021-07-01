@@ -13,6 +13,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component';
 import { CreateAptComponent } from './createapt/createapt.component';
 import {GridviewComponent} from "./gridview/gridview.component";
+import {ScannerFormComponent} from "./scannerform/scannerform.component";
 
 const routes: Routes = [
    //Site routes goes here
@@ -24,6 +25,7 @@ const routes: Routes = [
         { path: 'home', component: HomeComponent },
         { path: 'createapt', component: CreateAptComponent },
         { path: 'gridview', component: GridviewComponent},
+        { path: 'scannerform', component: ScannerFormComponent},
         { path: 'profile', component: ProfileComponent },
         { path: 'user', component: BoardUserComponent },
         { path: 'mod', component: BoardModeratorComponent },

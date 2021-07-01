@@ -26,6 +26,7 @@ import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/goog
 import {ExtendedModule} from "@angular/flex-layout";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {GridviewComponent} from "./gridview/gridview.component";
+import {ScannerFormComponent} from "./scannerform/scannerform.component";
 
 
 
@@ -37,6 +38,7 @@ import {GridviewComponent} from "./gridview/gridview.component";
     HomeComponent,
     CreateAptComponent,
     GridviewComponent,
+    ScannerFormComponent,
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
