@@ -13,7 +13,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component';
 import { CreateAptComponent } from './createapt/createapt.component';
 import {GridviewComponent} from "./gridview/gridview.component";
-import {ScannerFormComponent} from "./scannerform/scannerform.component";
+import { ScannerFormComponent } from './scannerform/scannerform.component';
 
 const routes: Routes = [
    //Site routes goes here

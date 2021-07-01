@@ -23,11 +23,11 @@
 
     <div class="col-sm-6 mx-auto autocomplete-container">
 
-      <div class="row g-3">
+      <div class="row g-3" [formGroup]="roomForm">
 
         <div class="col-lg-12">
           <label for="title" class="form-label">Título</label>
-          <input type="text" class="form-control" id="title" name="title" placeholder="" value="" pattern="[A-Za-z0-9]{0,50}" required>
+          <input formControlName="nombre" type="text" class="form-control" id="title" name="title" placeholder="">
           <div class="invalid-feedback">
             Coloca un nombre a tu publicacion (min 50 caracteres).
           </div>
@@ -36,6 +36,7 @@
         <div class="col-lg-12">
           <label class="form-label">Dirección</label>
           <mat-google-maps-autocomplete
+            formControlName="direccion"
             requiredErrorText=""
             invalidErrorText=""
             addressLabelText=""
@@ -49,7 +50,7 @@
         <div class="col-lg-6">
           <label for="size" class="form-label">Superficie</label>
           <div class="input-group">
-            <input type="number" class="form-control" id="size" name="size" placeholder="" value="" required>
+            <input formControlName="superficie" type="number" class="form-control" id="size" name="size" placeholder="" value="" required>
             <span class="input-group-text">m²</span>
           </div>
         </div>
@@ -57,7 +58,7 @@
         <div class="col-lg-6">
           <label for="area" class="form-label">Area construida</label>
           <div class="input-group">
-            <input type="number" class="form-control" id="area" name="area" placeholder="" value="" required>
+            <input formControlName="areaConstruida" type="number" class="form-control" id="area" name="area" placeholder="" value="" required>
             <span class="input-group-text">m²</span>
           </div>
         </div>
@@ -66,7 +67,7 @@
           <label for="price" class="form-label">Precio</label>
           <div class="input-group">
             <span class="input-group-text">$</span>
-            <input type="number" class="form-control" id="price" name="price" placeholder="" value="" required>
+            <input formControlName="precio" type="number" class="form-control" id="price" name="price" placeholder="" value="" required>
           </div>
           <div class="invalid-feedback">
             Coloca precio a tu inmueble
@@ -75,12 +76,12 @@
 
         <div class="col-lg-12">
           <label for="pics" class="form-label">Selecciona tus fotos</label>
-          <input type="file" class="form-control" id="pics" required>
+          <input formControlName="fotos" type="file" class="form-control" id="pics" required>
         </div>
 
         <div class="col-lg-12">
           <label for="description" class="form-label">Descripcion</label>
-          <textarea type="text" class="form-control" id="description" name="description" placeholder="" value="" pattern="[A-Za-z0-9]{1,300}" required></textarea>
+          <textarea formControlName="descripcion" type="text" class="form-control" id="description" name="description" placeholder="" value="" pattern="[A-Za-z0-9]{1,300}" required></textarea>
           <div class="invalid-feedback">
             La descripcion no puede ser vacia (max 300 caracteres)
           </div>
@@ -88,7 +89,7 @@
 
       </div>
       <hr class="my-3">
-      <button class="w-100 btn btn-primary btn-lg" type="submit" id="submitBtn">Crear Inmueble</button>
+      <button (click)="crearInmueble()" class="w-100 btn btn-primary btn-lg" type="submit" id="submitBtn">Crear Inmueble</button>
     </div>
     <div class="col-xl-5">
       <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [styles]="styles" [clickableIcons]="false">

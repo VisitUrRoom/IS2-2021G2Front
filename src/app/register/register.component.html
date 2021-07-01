@@ -74,14 +74,14 @@
             </div>
 
             <div class="col-md-6">
-              <label for="pwdId" class="form-label">Contraseña</label>
+              <label for="password" class="form-label">Contraseña</label>
               <div class="input-group form-group pass_show">
                 <input type="password" class="form-control pwds" name="password" [(ngModel)]="form.password"
                   minlength="5" #password="ngModel"  id="pwdId" pattern="[A-Za-z0-9]{5,99}" required>
                   <div id="cPwdValid" class="valid-feedback"></div>
                   <div id="cPwdInvalid" class="invalid-feedback">Ingresa una contraseña</div>
                 <div class="alert-danger" *ngIf="password.errors && f.submitted">
-
+                  
                   <div *ngIf="password.errors.required">La contraseña es requerida</div>
                   <div *ngIf="password.errors.minlength">La contraseña debe tener al menos 5 caracteres</div>
                 </div>
@@ -89,7 +89,7 @@
             </div>
 
             <div class="col-md-6">
-              <label for="cPwdId" class="form-label">Confirmar contraseña</label>
+              <label for="confpassword" class="form-label">Confirmar contraseña</label>
               <div class="input-group form-group pass_show">
                 <input type="password" class="form-control pwds" name="password2" placeholder="Confirmar contraseña" id="cPwdId" pattern="[A-Za-z0-9]{5,99}" required>
                 <div id="cPwdValid" class="valid-feedback"></div>
@@ -138,12 +138,12 @@
         <hr class="my-3">
         <div class="alert alert-success" role="alert" *ngIf="isSuccessful">
           <p>{{successfulMessage}}. Inicar sesión <a href="/login">Iniciar sesión</a></p>
-
+          
         </div>
         <div class="alert alert-danger" role="alert" *ngIf="isSignUpFailed">
           <p>{{errorMessage}}</p>
         </div>
-
+        
       </div>
     </div>
   </main>

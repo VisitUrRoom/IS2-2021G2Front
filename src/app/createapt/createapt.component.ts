@@ -5,6 +5,9 @@ import {Location, Appearance, GermanAddress} from '@angular-material-extensions/
 //import {} from '@types/googlemaps';
 import PlaceResult = google.maps.places.PlaceResult;
 import {Title} from '@angular/platform-browser';
+import { RoomService } from '../_services/room-service.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Room } from '../gridview/room';
 
 @Component({
   selector: 'app-createapt',
@@ -15,13 +18,23 @@ export class CreateAptComponent implements OnInit {
   content?: string;
   title = 'VisitUrRoom';
 
+  roomForm = new FormGroup({
+    nombre: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z0-9]{0,50}$/)]),
+    direccion: new FormControl(''),
+    superficie: new FormControl('', Validators.required),
+    areaConstruida: new FormControl('', Validators.required),
+    precio: new FormControl('', Validators.required),
+    fotos: new FormControl(undefined),
+    descripcion: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z0-9]{1,300}$/)])
+  });
+
   public lat: number;
   public lng: number;
   public zoom: number;
   public styles = styles;
   //public selectedAddress: PlaceResult;
 
-  constructor(private titleService: Title, private userService: UserService) {
+  constructor(private titleService: Title, private userService: UserService, private roomService: RoomService) {
     this.lat = 4.6097100;
     this.lng = -74.0817500;
     this.zoom = 20;
@@ -64,5 +77,22 @@ export class CreateAptComponent implements OnInit {
 
   onGermanAddressMapped($event: GermanAddress) {
     console.log('onGermanAddressMapped', $event);
+  }
+
+  crearInmueble(): void {
+    const {nombre, superficie, areaConstruida, precio, descripcion, direccion} = this.roomForm.getRawValue();
+    const room: Room = {
+      title: nombre,
+      superficie,
+      area: areaConstruida,
+      price: precio,
+      desctription: descripcion,
+      lat: direccion.geometry.location.lat(),
+      lng: direccion.geometry.location.lng(),
+      direccion: direccion.formatted_address,
+      image: ''
+    }
+    this.roomService.addRooms(room)
+      .subscribe(data => console.log(data));
   }
 }

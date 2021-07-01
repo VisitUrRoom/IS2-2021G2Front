@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +26,7 @@ import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/goog
 import {ExtendedModule} from "@angular/flex-layout";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {GridviewComponent} from "./gridview/gridview.component";
-import {ScannerFormComponent} from "./scannerform/scannerform.component";
+import { ScannerFormComponent } from './scannerform/scannerform.component';
 
 
 
@@ -53,6 +53,7 @@ import {ScannerFormComponent} from "./scannerform/scannerform.component";
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBHNb4aI9XNZfT0SAPSe1jo9XvBTPMXIoU',
