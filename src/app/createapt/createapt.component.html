@@ -1,0 +1,100 @@
+<div class="container">
+
+  <hr class="my-9 titleline">
+
+  <div class="row g-2">
+
+    <div class="col-lg-8">
+      <div class="section-title-header">
+        <h2 class="section-title-bg" id="remember">Recuerda que puedes solicitar el escaneo de tu casa o apartamento para obtener mejores visitas</h2>
+      </div>
+    </div>
+
+    <div class="col-lg-2">
+      <div class="text-center">
+        <a class="btn btn-common" id="solicitar">Solicitar Ahora</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-3 titleline" >
+
+  <div class="row g-5">
+
+    <div class="col-sm-6 mx-auto autocomplete-container">
+
+      <div class="row g-3" [formGroup]="roomForm">
+
+        <div class="col-lg-12">
+          <label for="title" class="form-label">Título</label>
+          <input formControlName="nombre" type="text" class="form-control" id="title" name="title" placeholder="">
+          <div class="invalid-feedback">
+            Coloca un nombre a tu publicacion (min 50 caracteres).
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <label class="form-label">Dirección</label>
+          <mat-google-maps-autocomplete
+            formControlName="direccion"
+            requiredErrorText=""
+            invalidErrorText=""
+            addressLabelText=""
+            [appearance]="'outline'"
+            (onAutocompleteSelected)="onAutocompleteSelected($event)"
+            (onLocationSelected)="onLocationSelected($event)"
+            (onGermanAddressMapped)="onGermanAddressMapped($event)">
+          </mat-google-maps-autocomplete>
+        </div>
+
+        <div class="col-lg-6">
+          <label for="size" class="form-label">Superficie</label>
+          <div class="input-group">
+            <input formControlName="superficie" type="number" class="form-control" id="size" name="size" placeholder="" value="" required>
+            <span class="input-group-text">m²</span>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <label for="area" class="form-label">Area construida</label>
+          <div class="input-group">
+            <input formControlName="areaConstruida" type="number" class="form-control" id="area" name="area" placeholder="" value="" required>
+            <span class="input-group-text">m²</span>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <label for="price" class="form-label">Precio</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input formControlName="precio" type="number" class="form-control" id="price" name="price" placeholder="" value="" required>
+          </div>
+          <div class="invalid-feedback">
+            Coloca precio a tu inmueble
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <label for="pics" class="form-label">Selecciona tus fotos</label>
+          <input formControlName="fotos" type="file" class="form-control" id="pics" required>
+        </div>
+
+        <div class="col-lg-12">
+          <label for="description" class="form-label">Descripcion</label>
+          <textarea formControlName="descripcion" type="text" class="form-control" id="description" name="description" placeholder="" value="" pattern="[A-Za-z0-9]{1,300}" required></textarea>
+          <div class="invalid-feedback">
+            La descripcion no puede ser vacia (max 300 caracteres)
+          </div>
+        </div>
+
+      </div>
+      <hr class="my-3">
+      <button (click)="crearInmueble()" class="w-100 btn btn-primary btn-lg" type="submit" id="submitBtn">Crear Inmueble</button>
+    </div>
+    <div class="col-xl-5">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [styles]="styles" [clickableIcons]="false">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>

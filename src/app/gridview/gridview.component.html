@@ -1,0 +1,17 @@
+ <!-- Container que lista las habitaciones de la base de datos -->
+ <div class="Container" id= "main-container">
+
+  <div class="row">
+      <div class="col-md-6 col-xl-6">
+        
+          <div *ngFor="let room of rooms" class="card m-b-30">
+            
+              <div class="card-body row">
+                <div >
+                  <a href=""><img src="" alt="" class="img-fluid"></a>
+              </div>
+                  <div class="col-6 card-title align-self-center mb-0">
+                      <h5>{{room?.title}}</h5>
+                  </div>
+               
+              </div>

@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 # IS22021GFront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
+=======
+# Loginangular
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+>>>>>>> Stashed changes
 
 ## Development server
 
@@ -25,3 +31,15 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Instalar Google maps
+
+npm install @agm/core@^1.1.0
+
+npm install @angular/google-maps
+
+npm i @types/googlemaps@3.39.13
+
+npm install --save @angular-material-extensions/google-maps-autocomplete
+
+npm install @angular/flex-layout

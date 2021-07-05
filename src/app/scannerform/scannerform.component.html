@@ -1,0 +1,106 @@
+<div class="container">
+
+  <hr class="my-9 titleline">
+
+  <section id="intro" class="gif-scanner d-flex align-items-end">
+    <div class="search-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="intro-title mx-5">¡Que tus clientes puedan observar desde cualquier sitio tu inmueble como si estuvieran en el!</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="my-3 titleline" >
+  <p class="text-center font-italic text-dark" id="instructions">Rellena todos los datos del formulario y agenda una cita, se enviará un correo de confirmación con tu cita agendada para que uno de nuestros agentes genere el escaneo, recuerda que el escaneo puede tardar de 2 a 3 horas en realizarse completamente.</p>
+  <hr class="my-3 titleline" >
+  <div class="row g-5">
+
+    <div class="col-sm-6 mx-auto autocomplete-container">
+
+      <div class="row g-3">
+
+        <div class="col-lg-12">
+          <label for="title" class="form-label">Título</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="" value="" pattern="[A-Za-z0-9]{0,50}" required>
+          <div class="invalid-feedback">
+            Coloca un nombre a tu publicacion (min 50 caracteres).
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <label class="form-label">Dirección</label>
+          <mat-google-maps-autocomplete
+            requiredErrorText=""
+            invalidErrorText=""
+            addressLabelText=""
+            [appearance]="'outline'"
+            (onAutocompleteSelected)="onAutocompleteSelected($event)"
+            (onLocationSelected)="onLocationSelected($event)"
+            (onGermanAddressMapped)="onGermanAddressMapped($event)">
+          </mat-google-maps-autocomplete>
+        </div>
+
+        <div class="col-lg-6">
+          <label for="size" class="form-label">Superficie</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="size" name="size" placeholder="" value="" required>
+            <span class="input-group-text">m²</span>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <label for="area" class="form-label">Area construida</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="area" name="area" placeholder="" value="" required>
+            <span class="input-group-text">m²</span>
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <label for="price" class="form-label">Precio</label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="number" class="form-control" id="price" name="price" placeholder="" value="" required>
+          </div>
+          <div class="invalid-feedback">
+            Coloca precio a tu inmueble
+          </div>
+        </div>
+
+        <div class="col-lg-12">
+          <label for="visitdate" class="form-label">Agenda tu cita</label>
+          <input type="date" class="form-control" id="visitdate" min="today" max="2099-12-31">
+        </div>
+
+        <div class="col-lg-12">
+          <label for="description" class="form-label">Descripcion</label>
+          <textarea type="text" class="form-control" id="description" name="description" placeholder="" value="" pattern="[A-Za-z0-9]{1,300}" required></textarea>
+          <div class="invalid-feedback">
+            La descripcion no puede ser vacia (max 300 caracteres)
+          </div>
+        </div>
+
+      </div>
+      <hr class="my-3">
+      <button class="w-100 btn btn-primary btn-lg" type="submit" id="submitBtn">Solicitar Cita</button>
+    </div>
+    <div class="col-xl-5">
+      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [styles]="styles" [clickableIcons]="false">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  var today = new Date();
+  var dd = ("0" + (today.getDate())).slice(-2);
+  var mm = ("0" + (today.getMonth() +　1)).slice(-2);
+  var yyyy = today.getFullYear();
+  today = yyyy + '-' + mm + '-' + dd ;
+  $("#visitdate").attr("value", today);
+</script>

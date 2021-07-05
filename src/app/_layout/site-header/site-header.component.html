@@ -1,0 +1,123 @@
+<!-- Header Area wrapper Starts -->
+<header id="header-wrap">
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-8 col-xs-12">
+            <!-- Start Contact Info -->
+            <ul class="links clearfix">
+              <li><i class="lni-phone-handset"></i>57 313 999 999</li>
+              <li><i class="lni-envelope"></i> info@visiturroom.com</li>
+              <li><a href="#"><i class="lni-map-marker"></i> Bogota DC</a></li>
+            </ul>
+            <!-- End Contact Info -->
+          </div>
+          <div class="col-lg-6 col-md-4 col-xs-12 d-flex">
+            <div class="header-top-right float-left">
+              <a *ngIf="isLoggedIn" class="header-top-button" routerLink="/profile">Escritorio</a>
+              <a *ngIf="isLoggedIn" class="header-top-button" routerLink="/profile" routerLink="profile">{{ username }}</a>
+
+              <a *ngIf="isLoggedIn" class="header-top-button" href (click)="logout()">Cerrar sesión</a>
+              <a *ngIf="!isLoggedIn" class="header-top-button" routerLink="/login"><i class="lni-lock"></i> iniciar Sesión</a>
+              <a *ngIf="!isLoggedIn" href="/register" class="header-top-button" outerLink="register"><i class="lni-pencil"></i> Registrarse</a>
+            </div>
+            <div class="roof-social float-right">
+              <a class="facebook" href="https://www.facebook.com" target="_blank"><i class="lni-facebook-filled"></i></a>
+              <a class="twitter" href="https://www.twitter.com" target="_blank"><i class="lni-twitter-filled"></i></a>
+              <a class="instagram" href="https://www.instagram.com" target="_blank"><i class="lni-instagram-filled"></i></a>
+              <a class="linkedin" href="https://www.linkedin.com" target="_blank"><i class="lni-linkedin-filled"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white"  data-toggle="sticky-onscroll">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <span class="lin-menu"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"><img src="/assets/img/logo.png" alt=""></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-navbar">
+          <ul class="navbar-nav mr-auto w-100 justify-content-center">
+            <li class="nav-item dropdown">
+              <a class="nav-link" routerLink="/home">
+                Inicio
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" routerLink="/createapt">
+                Crear Inmueble
+              </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link" routerLink="/gridview">
+                Publicaciones
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Recursos <i class="fa fa-angle-down"></i>
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/home#agents">Nuestros Agentes</a>
+                <a class="dropdown-item" href="/home#about-us">Sobre nosotros</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/home">
+                Contacto
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Start -->
+      <ul class="mobile-menu">
+        <li>
+          <a routerLink="/home">
+          Inicio
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            Crear Inmueble
+          </a>
+        </li>
+        <li>
+          <a href="#">Publicaciones</a>
+        </li>
+        <li>
+          <a href="#">Recursos</a>
+          <ul class="dropdown">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="agents.html">Agents</a></li>
+            <li><a href="rent.html">For Rent</a></li>
+            <li><a href="sale.html">For Sale</a></li>
+            <li><a href="pricing.html">Pricing Tables</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="submit-property.html">Submission Form</a></li>
+          </ul>
+        </li>
+        <li>
+          <a routerLink="/contacto">
+          Contacto
+          </a>
+        </li>
+      </ul>
+      <!-- Mobile Menu End -->
+    </nav>
+    <!-- Navbar End -->
+    <div class="clearfix"></div>
+  </header>
+  <!-- Header Area wrapper End -->

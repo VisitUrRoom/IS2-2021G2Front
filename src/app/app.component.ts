@@ -249,5 +249,8 @@ export class AppComponent implements OnInit{
     container.appendChild(button);
     button.click();
   }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }
