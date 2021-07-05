@@ -1,256 +1,36 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Room } from './room';
-import { RoomService } from './room.service';
-
+import { TokenStorageService } from './_services/token-storage.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  public rooms: Room[];
-  public editRoom: Room;
-  public deleteRoom: Room;
+export class AppComponent implements OnInit {
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username?: string;
 
-  /* geolocalizacion maps */
+  constructor(private tokenStorageService: TokenStorageService) { }
 
-  lat: number;
-  lng: number;
-  zoom: number;
-  styles = [
-    {
-      "featureType": "administrative",
-      "elementType": "geometry",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "administrative.locality",
-      "elementType": "labels.text",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "administrative.neighborhood",
-      "elementType": "labels.text",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "poi",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.attraction",
-      "elementType": "labels.icon",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.business",
-      "elementType": "labels.icon",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.government",
-      "elementType": "labels.icon",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.medical",
-      "elementType": "labels.icon",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.park",
-      "elementType": "labels.icon",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.place_of_worship",
-      "elementType": "labels.icon",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.school",
-      "elementType": "labels.icon",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "poi.sports_complex",
-      "elementType": "labels.icon",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "road",
-      "elementType": "labels.icon",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    },
-    {
-      "featureType": "transit",
-      "stylers": [
-        {
-          "visibility": "off"
-        }
-      ]
-    }
-  ];
- 
+  ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
 
-  constructor(private roomService: RoomService) { 
-    this.lat = 4.647168;
-    this.lng = -74.099309;
-    this.zoom = 15;
-    }
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
 
-  ngOnInit(){
-    this.getRooms();
-  }
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
-  public getRooms(): void{
-    this.roomService.getRooms().subscribe(
-      (response: Room[]) => {
-        this.rooms = response;
-      },
-      (error: HttpErrorResponse)=>{
-        alert(error.message);
-      }
-    );
-  }
-
-  public onAddRoom(addForm: NgForm): void{
-    document.getElementById('add-room-form').click();
-    this.roomService.addRoom(addForm.value).subscribe(
-      (response: Room) =>{
-        console.log(response);
-        this.getRooms(); 
-        addForm.reset();
-      },
-      (error: HttpErrorResponse) =>{
-        alert(error.message);
-        addForm.reset();
-
-      }
-    );
-  }
-
-  public onUpdateRoom(room: Room): void{
-    this.roomService.updateRoom(room).subscribe(
-      (response: Room) =>{
-        console.log(response);
-        this.getRooms(); 
-      },
-      (error: HttpErrorResponse) =>{
-        alert(error.message);
-      }
-    );
-  }
-
-  public onDeleteRoom(roomId: number): void{
-    this.roomService.deleteRoom(roomId).subscribe(
-      (response: void) =>{
-        console.log(response);
-        this.getRooms(); 
-      },
-      (error: HttpErrorResponse) =>{
-        alert(error.message);
-      }
-    );
-  }
-
-  public searchRooms(key: string): void{
-    const results: Room[] = [];
-    for (const room of this.rooms){
-      if (room.name.toLowerCase().indexOf(key.toLowerCase()) ! == -1
-      || room.location.toLowerCase().indexOf(key.toLowerCase()) ! == -1) {
-        results.push(room); 
-      }
-    }
-    this.rooms = results;
-    if (results.length === 0 || !key){
-      this.getRooms();
+      this.username = user.username;
     }
   }
 
-  public onOpenModal(room: Room, mode: string): void{
-    const container =document.getElementById('main-container');
-    const button = document.createElement('button');
-
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-toggle','modal');
-
-    if (mode === 'add'){
-      button.setAttribute('data-target','#addRoomModal'); 
-    }
-    if (mode === 'edit'){
-      this.editRoom = room;
-      button.setAttribute('data-target','#updateRoomModal'); 
-    }
-    if (mode === 'delete'){
-      this.deleteRoom = room;
-      button.setAttribute('data-target','#deleteRoomModal'); 
-    }
-    if (mode === 'know'){
-      button.setAttribute('data-target','#knowRoomModal'); 
-    }
-
-    container.appendChild(button);
-    button.click();
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 }

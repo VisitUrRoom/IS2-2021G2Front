@@ -1,32 +1,10 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-<<<<<<< Updated upstream
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { AgmCoreModule } from '@agm/core'
-=======
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
->>>>>>> Stashed changes
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< Updated upstream
-import { RoomService } from './room.service';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule, 
-    FormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBHNb4aI9XNZfT0SAPSe1jo9XvBTPMXIoU'
-    })
-  ],
-  providers: [RoomService],
-=======
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
@@ -86,7 +64,6 @@ import { RoomService } from './_services/room-service.service';
     ExtendedModule
   ],
   providers: [RoomService, authInterceptorProviders, { provide: APP_BASE_HREF, useValue: '' }],
->>>>>>> Stashed changes
   bootstrap: [AppComponent]
 })
 export class AppModule { }

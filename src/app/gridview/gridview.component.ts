@@ -19,6 +19,9 @@ export class GridviewComponent implements OnInit {
   content?: string;
   title = 'VisitUrRoom';
   public rooms!: Room[];
+  public knowRoom!: Room;
+  public editRoom!: Room;
+  public deleteRoom!: Room;
 
   public lat: number;
   public lng: number;
@@ -54,4 +57,24 @@ export class GridviewComponent implements OnInit {
       }
     );
   }
+
+
+  public onOpenModal(room: Room, mode: string): void{
+    const container =document.getElementById('main-container');
+    const button = document.createElement('button');
+
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle','modal');
+
+    if (mode === 'know'){
+      this.knowRoom = room;
+      button.setAttribute('data-target','#knowRoom'); 
+    }
+
+    container?.appendChild(button);
+    button.click();
+  }
+
+
 }

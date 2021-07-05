@@ -8,6 +8,7 @@ import {Title} from '@angular/platform-browser';
 import { RoomService } from '../_services/room-service.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Room } from '../gridview/room';
+import { Identifiers } from '@angular/compiler';
 
 @Component({
   selector: 'app-createapt',
@@ -80,8 +81,9 @@ export class CreateAptComponent implements OnInit {
   }
 
   crearInmueble(): void {
-    const {nombre, superficie, areaConstruida, precio, descripcion, direccion} = this.roomForm.getRawValue();
+    const {Id, nombre, superficie, areaConstruida, precio, descripcion, direccion,fotos} = this.roomForm.getRawValue();
     const room: Room = {
+      id : Id,
       title: nombre,
       superficie,
       area: areaConstruida,
@@ -90,7 +92,7 @@ export class CreateAptComponent implements OnInit {
       lat: direccion.geometry.location.lat(),
       lng: direccion.geometry.location.lng(),
       direccion: direccion.formatted_address,
-      image: ''
+      image: fotos
     }
     this.roomService.addRooms(room)
       .subscribe(data => console.log(data));

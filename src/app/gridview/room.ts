@@ -1,4 +1,5 @@
 export interface Room {
+    id: number;
     title : string;
     direccion : string;
     lat: string;

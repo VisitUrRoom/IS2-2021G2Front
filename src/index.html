@@ -1,16 +1,104 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
+
 <head>
+  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <title>IS22021GFront</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>VisitUrRoom</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+  <!-- Fonts -->
+  <link rel="stylesheet" type="text/css" href="assets/fonts/line-icons.css">
+  <!-- Slicknav -->
+  <link rel="stylesheet" type="text/css" href="assets/css/slicknav.css">
+
+  <!-- Range Slider -->
+  <link rel="stylesheet" type="text/css" href="assets/css/ion.rangeSlider.css">
+  <!-- Range Slider  -->
+  <link rel="stylesheet" type="text/css" href="assets/css/ion.rangeSlider.skinFlat.css">
+  <!-- Nivo Lightbox -->
+  <link rel="stylesheet" type="text/css" href="assets/css/nivo-lightbox.css">
+  <!-- Animate -->
+  <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+  <!-- Owl carousel -->
+  <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.css">
+  <!-- Rav Slider -->
+  <link rel="stylesheet" type="text/css" href="assets/extras/settings.css">
+  <link rel="stylesheet" type="text/css" href="assets/extras/layers.css">
+  <link rel="stylesheet" type="text/css" href="assets/extras/navigation.css">
+  <!-- Main Style -->
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <!-- Responsive Style -->
+  <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+  <link rel="stylesheet" id="colors" href="assets/css/colors/blue.css" type="text/css">
+
 </head>
+
 <body>
   <app-root></app-root>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+  <script src="assets/js/form-validation.js"></script>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="assets/js/jquery-min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery.mixitup.js"></script>
+  <script src="assets/js/jquery.counterup.min.js"></script>
+  <script src="assets/js/ion.rangeSlider.js"></script>
+  <script src="assets/js/jquery.parallax.js"></script>
+  <script src="assets/js/waypoints.min.js"></script>
+  <script src="assets/js/wow.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="assets/js/jquery.slicknav.js"></script>
+  <script src="assets/js/nivo-lightbox.js"></script>
+  <script src="assets/js/jquery.slicknav.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+
+
+      $('#pwdId, #cPwdId').on('keyup', function () {
+        if ($('#pwdId').val() != '' && $('#cPwdId').val() != '' && $('#pwdId').val() == $('#cPwdId').val()) {
+          $("#submitBtn").attr("disabled", false);
+          $('#cPwdValid').show();
+          $('#cPwdInvalid').hide();
+          $('#cPwdValid').html('Contraseñas identicas').css('color', 'green');
+          $('.pwds').removeClass('is-invalid')
+        } else {
+          $("#submitBtn").attr("disabled", true);
+          $('#cPwdValid').hide();
+          $('#cPwdInvalid').show();
+          $('#cPwdInvalid').html('Contraseña no identica').css('color', 'red');
+          $('.pwds').addClass('is-invalid')
+        }
+      });
+    });
+  </script>
+
+  <style>
+    .confirmacion {
+      background: #C6FFD5;
+      border: 1px solid green;
+    }
+
+    .negacion {
+      background: #ffcccc;
+      border: 1px solid red
+    }
+
+    .pass_show .ptxt {
+      position: absolute;
+      top: 19px;
+      right: 28px;
+      z-index: 99999;
+      font-size: 12px;
+    }
+  </style>
 </body>
+
 </html>
