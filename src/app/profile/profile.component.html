@@ -93,10 +93,10 @@
                   <tbody *ngFor="let room of rooms">
                     <tr>
                       <td>{{room?.title}}</td>
-                      <td>${{room?.price}}</td>
+                      <td>{{room?.price | currency:"":"symbol"}}</td>
                       <td class="rating"><span>{{room?.area}} mts</span></td>
                       <td (click)="onOpenModal(room, 'edit')"class="edit"><a href="#"><span class="lni-pencil"></span></a></td>
-                      <td (click)="onOpenModal(room, 'delete')"class="delete"><a href="#"><span class="lni lni-close"></span></a></td>                    
+                      <td (click)="onOpenModal(room, 'delete')"class="delete"><a href="#"><span class="lni lni-close"></span></a></td>
                     </tr>
 
                   </tbody>
@@ -105,8 +105,8 @@
             </div>
           </div>
 
-          
-          
+
+
           <div class="dashborad-box">
             <h3 class="heading">Información Personal</h3>
             <div class="section-inforamation">
@@ -186,8 +186,8 @@
                 <input type="text" ngModel="{{editRoom?.title}}" name="title" class="form-control" id="title" placeholder="Título" required>
              </div>
              <input type="hidden" ngModel="{{editRoom?.id}}" name="id" class="form-control" id="id" placeholder="Nombre">
-             
-              
+
+
               <div class="form-group">
                 <label for="direccion">Dirección</label>
                 <input type="text" ngModel="{{editRoom?.direccion}}" name="direccion" class="form-control" id="direccion" placeholder="Direccion" required>
@@ -221,7 +221,7 @@
       </div>
    </div>
   </div>
-  
+
 
     <!-- delete room Modal -->
     <div class="modal fade" id="deleteRoomModal" tabindex="-1" aria-labelledby="deleteRoomModalLabel" aria-hidden="true">
@@ -243,7 +243,7 @@
        </div>
     </div>
     </div>
-  
+
 
 
 

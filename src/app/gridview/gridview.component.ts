@@ -4,10 +4,11 @@ import {styles} from "../../assets/ts/stylemap";
 import {Location, Appearance, GermanAddress} from '@angular-material-extensions/google-maps-autocomplete';
 //import {} from '@types/googlemaps';
 import PlaceResult = google.maps.places.PlaceResult;
-import {Title} from '@angular/platform-browser';
+import {Title, DomSanitizer} from '@angular/platform-browser';
 import { RoomService } from '../_services/room-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Room } from './room';
+import {formatCurrency} from "@angular/common";
 
 @Component({
   selector: 'app-gridview',
@@ -15,7 +16,7 @@ import { Room } from './room';
   styleUrls: ['./gridview.component.css']
 })
 export class GridviewComponent implements OnInit {
-  
+
   content?: string;
   title = 'VisitUrRoom';
   public rooms!: Room[];
@@ -69,12 +70,14 @@ export class GridviewComponent implements OnInit {
 
     if (mode === 'know'){
       this.knowRoom = room;
-      button.setAttribute('data-target','#knowRoom'); 
+      button.setAttribute('data-target','#knowRoom');
     }
 
     container?.appendChild(button);
     button.click();
   }
 
-
+  public locateCaster(data: string){
+    return parseFloat(data);
+  }
 }
