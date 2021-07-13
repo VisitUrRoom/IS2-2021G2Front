@@ -1,3 +1,5 @@
+import {SafeUrl} from "@angular/platform-browser";
+
 export interface Room {
     id: number;
     title : string;
@@ -7,6 +9,6 @@ export interface Room {
     superficie : number;
     area : number;
     price : number;
-    image : string;
+    image : any;
     desctription : string;
 }

@@ -5,7 +5,7 @@
         <div id="conatiner-map">
           <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [styles]="styles" [clickableIcons]="false" [fitBounds]="true">
             <agm-marker *ngFor="let room of rooms" [latitude]="locateCaster(room.lat)" [longitude]="locateCaster(room.lng)" [agmFitBounds]="true" [visible]="true"
-            [iconUrl]="'../assets/img/AptMarker.svg'"
+                        [iconUrl]="'../assets/img/AptMarker.svg'"
             >\
               <agm-info-window [disableAutoPan]="false">
                 <p><b (click)="onOpenModal(room, 'know')" data-original-title="know">{{room.price | currency:"":"symbol"}}</b></p>
@@ -56,7 +56,8 @@
               <div class="property-item">
                 <div class="item-thumb">
                   <a class="hover-effect">
-                    <img class="img-fluid" src="{{room?.image}}" alt="">
+                    <!--                    <img class="img-fluid" src="{{room?.image}}" alt="">-->
+                    <iframe  width="315" height="200" [src]="room?.image | safeUrl" frameborder="0" allowfullscreen allow="xr-spatial-tracking"></iframe>
                   </a>
                   <div class="label-inner">
                     <span class="label-status label bg-red" (click)="onOpenModal(room, 'know')" data-original-title="know">Conocelo</span>
@@ -102,8 +103,8 @@
             </div>
             <div class="modal-body">
               <ul class="list-group list-group-flush">
-<!--                <a href=""><img src="{{knowRoom?.image}}" alt="" class="img-fluid"></a>-->
-                <iframe  width="465" height="300" src="{{knowRoom?.image}}" frameborder="0" allowfullscreen allow="xr-spatial-tracking"></iframe>
+                <!--                <a href=""><img src="{{knowRoom?.image}}" alt="" class="img-fluid"></a>-->
+                <iframe  width="465" height="300" [src]="knowRoom?.image | safeUrl" frameborder="0" allowfullscreen allow="xr-spatial-tracking"></iframe>
                 <li class="list-group-item"><i class="fa fa-user float-right"></i>Nombre : {{knowRoom?.title}}</li>
                 <li class="list-group-item"><i class="fa fa-map-marker float-right"></i>Ubicación : {{knowRoom?.direccion}}</li>
                 <li class="list-group-item"><i class="fa fa-money float-right"></i>Valor: {{knowRoom?.price | currency:"":"symbol"}}</li>

@@ -28,6 +28,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {GridviewComponent} from "./gridview/gridview.component";
 import { ScannerFormComponent } from './scannerform/scannerform.component';
 import { RoomService } from './_services/room-service.service';
+import { SafeUrlPipe } from './_helpers/safe-url.pipe';
 
 
 
@@ -48,6 +49,7 @@ import { RoomService } from './_services/room-service.service';
     SiteHeaderComponent,
     SiteFooterComponent,
     SiteLayoutComponent,
+    SafeUrlPipe,
   ],
   imports: [
     BrowserModule,
