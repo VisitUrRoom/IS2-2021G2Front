@@ -11,4 +11,5 @@ export interface Room {
     price : number;
     image : any;
     desctription : string;
+    tipo: string;
 }

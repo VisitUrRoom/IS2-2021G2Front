@@ -22,12 +22,12 @@
 
   <div class="row g-5">
 
-    <div class="col-sm-6 mx-auto autocomplete-container">
+    <div class="col-sm-6 mx-auto autocomplete-container" >
 
       <div class="row g-3" [formGroup]="roomForm">
         <div class="col-lg-12">
           <label for="title" class="form-label">Título</label>
-          <input formControlName="nombre" type="text" class="form-control" id="title" name="title" placeholder="">
+          <input formControlName="nombre" type="text" class="form-control" id="title" name="title" placeholder="Nombre de tu room">
           <div class="invalid-feedback">
             Coloca un nombre a tu publicacion (min 50 caracteres).
           </div>
@@ -50,7 +50,7 @@
         <div class="col-lg-6">
           <label for="size" class="form-label">Superficie</label>
           <div class="input-group">
-            <input formControlName="superficie" type="number" class="form-control" id="size" name="size" placeholder="" value="" required>
+            <input formControlName="superficie" type="number" class="form-control" id="size" name="size" placeholder="Superficie" value="" required>
             <span class="input-group-text">m²</span>
           </div>
         </div>
@@ -58,19 +58,27 @@
         <div class="col-lg-6">
           <label for="area" class="form-label">Area construida</label>
           <div class="input-group">
-            <input formControlName="areaConstruida" type="number" class="form-control" id="area" name="area" placeholder="" value="" required>
+            <input formControlName="areaConstruida" type="number" class="form-control" id="area" name="area" placeholder="Area" value="" required>
             <span class="input-group-text">m²</span>
           </div>
         </div>
 
-        <div class="col-lg-12">
+        <div class="col-lg-6">
           <label for="price" class="form-label">Precio</label>
           <div class="input-group">
             <span class="input-group-text">$</span>
-            <input formControlName="precio" type="number" class="form-control" id="price" name="price" placeholder="" value="" required>
+            <input formControlName="precio" type="number" class="form-control" id="price" name="price" placeholder="Precio" value="" required>
           </div>
           <div class="invalid-feedback">
             Coloca precio a tu inmueble
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <label for="size" class="form-label">Tipo</label>
+          <div class="input-group">
+            <input formControlName="tipo" type="text" class="form-control" id="tipo" name="tipo" placeholder="Arriendo o Venta" value="" required>
+           
           </div>
         </div>
 

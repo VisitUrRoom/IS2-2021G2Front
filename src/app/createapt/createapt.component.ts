@@ -25,8 +25,10 @@ export class CreateAptComponent implements OnInit {
     superficie: new FormControl('', Validators.required),
     areaConstruida: new FormControl('', Validators.required),
     precio: new FormControl('', Validators.required),
-    fotos: new FormControl(undefined),
-    descripcion: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z0-9]{1,300}$/)])
+    fotos: new FormControl(undefined),  
+    descripcion: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z0-9]{1,300}$/)]),
+    tipo: new FormControl('', Validators.required)
+
   });
 
   public lat: number;
@@ -81,11 +83,12 @@ export class CreateAptComponent implements OnInit {
   }
 
   crearInmueble(): void {
-    const {Id, nombre, superficie, areaConstruida, precio, descripcion, direccion,fotos} = this.roomForm.getRawValue();
+    const {Id, nombre, superficie, areaConstruida, precio, descripcion, direccion,fotos, tipo} = this.roomForm.getRawValue();
     const room: Room = {
       id : Id,
       title: nombre,
       superficie,
+      tipo,
       area: areaConstruida,
       price: precio,
       desctription: descripcion,

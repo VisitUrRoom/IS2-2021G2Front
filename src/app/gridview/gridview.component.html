@@ -60,8 +60,7 @@
                     <iframe  width="315" height="200" [src]="room?.image | safeUrl" frameborder="0" allowfullscreen allow="xr-spatial-tracking"></iframe>
                   </a>
                   <div class="label-inner">
-                    <span class="label-status label bg-red" (click)="onOpenModal(room, 'know')" data-original-title="know">Conocelo</span>
-                  </div>
+                    <span class="label-status label bg-red">{{room?.tipo}}</span>                  </div>
                 </div>
                 <div class="item-body">
                   <h3 class="property-title" (click)="onOpenModal(room, 'know')" data-original-title="know"><a id="gridTitle"> {{room?.title}}</a></h3>
@@ -106,6 +105,7 @@
                 <!--                <a href=""><img src="{{knowRoom?.image}}" alt="" class="img-fluid"></a>-->
                 <iframe  width="465" height="300" [src]="knowRoom?.image | safeUrl" frameborder="0" allowfullscreen allow="xr-spatial-tracking"></iframe>
                 <li class="list-group-item"><i class="fa fa-user float-right"></i>Nombre : {{knowRoom?.title}}</li>
+                <li class="list-group-item"><i class="fa fa-user float-right"></i>Tipo : En {{knowRoom?.tipo}}</li>
                 <li class="list-group-item"><i class="fa fa-map-marker float-right"></i>Ubicación : {{knowRoom?.direccion}}</li>
                 <li class="list-group-item"><i class="fa fa-money float-right"></i>Valor: {{knowRoom?.price | currency:"":"symbol"}}</li>
                 <li class="list-group-item"><i class="fa fa-phone float-right"></i>Area total : {{knowRoom?.superficie}}</li>
@@ -127,105 +127,11 @@
         <div class="sidebar sticky right">
 
           <div class="widget">
-            <h3 class="sidebar-title">Find New Home</h3>
-            <div class="row with-forms">
-              <div class="col-md-12">
-                <select class="classic">
-                  <option>Any Status</option>
-                  <option>For Sale</option>
-                  <option>For Rent</option>
-                </select>
-              </div>
-            </div>
-            <div class="row with-forms">
-              <div class="col-md-12">
-                <select class="classic">
-                  <option>All Types</option>
-                  <option>Apartments (3)</option>
-                  <option>Houses (2)</option>
-                  <option>Condos (1)</option>
-                  <option>Industrial (2)</option>
-                  <option>Land (3)</option>
-                  <option>Offices (1)</option>
-                  <option>Retail (2)</option>
-                  <option>Villas (1)</option>
-                </select>
-              </div>
-            </div>
-            <div class="row with-forms">
-              <div class="col-md-12">
-                <select class="classic">
-                  <option>All States</option>
-                  <option>Alabama</option>
-                  <option>Arkansas</option>
-                  <option>California</option>
-                  <option>Colorado</option>
-                  <option>Connecticut</option>
-                  <option>Florida</option>
-                  <option>Indiana</option>
-                  <option>New York</option>
-                  <option>Washington</option>
-                  <option>West Virginia</option>
-                  <option>Wisconsin</option>
-                  <option>Wyoming</option>
-                </select>
-              </div>
-            </div>
-            <div class="row with-forms">
-              <div class="col-md-12">
-                <select class="classic">
-                  <option>All Cities</option>
-                  <option>New York</option>
-                  <option>California</option>
-                  <option>Washington</option>
-                  <option>Chicago</option>
-                  <option>Phoenix</option>
-                  <option>Birmingham</option>
-                </select>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <select class="classic">
-                  <option>Beds</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-              <div class="col-md-6">
-                <select class="classic">
-                  <option>Baths</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="range-area">
-              <label>Area Range</label>
-              <div id="area-range">
-                <input type="text" class="form-control">
-                <span>m² a</span>
-                <input type="text" class="form-control">
-                <span>m²</span>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-
-            <div class="price-range">
-              <label></label>
-
-              <div class="clearfix"></div>
-            </div>
-
-
-            <button class="fullwidth btn btn-common">Search</button>
+            <h3 class="sidebar-title">Busca algo nuevo</h3>
+            <form class="form-inline my-2 my-lg-0">
+              <input type="search" (ngModelChange)="searchRooms(key.value)" #key="ngModel" ngModel
+              name="key" id="searchName" class="form-control mr-sm-2" placeholder="Buscar..." required>
+           </form>
           </div>
 
         </div>

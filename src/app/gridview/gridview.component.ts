@@ -59,6 +59,19 @@ export class GridviewComponent implements OnInit {
     );
   }
 
+  public searchRooms(key: string): void{
+    const results: Room[] = [];
+    for (const room of this.rooms){
+      if (room.title.toLowerCase().indexOf(key.toLowerCase()) ! == -1) {
+        results.push(room); 
+      }
+    }
+    this.rooms = results;
+    if (results.length === 0 || !key){
+      this.getRooms();
+    }
+  }
+
 
   public onOpenModal(room: Room, mode: string): void{
     const container =document.getElementById('main-container');
