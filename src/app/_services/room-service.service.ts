@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
+
 import { Room } from '../gridview/room';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoomService {
 
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = environment.apiBaseUrl
   constructor(private http : HttpClient) { }
 
   public addRooms(room: Room): Observable<Room> {
