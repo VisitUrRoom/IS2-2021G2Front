@@ -9,6 +9,7 @@ import { RoomService } from '../_services/room-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Room } from './room';
 import {formatCurrency} from "@angular/common";
+import {TokenStorageService} from "../_services/token-storage.service";
 
 @Component({
   selector: 'app-gridview',
@@ -23,6 +24,7 @@ export class GridviewComponent implements OnInit {
   public knowRoom!: Room;
   public editRoom!: Room;
   public deleteRoom!: Room;
+  currentUser: any;
 
   public lat: number;
   public lng: number;
@@ -30,7 +32,7 @@ export class GridviewComponent implements OnInit {
   public styles = styles;
   //public selectedAddress: PlaceResult;
 
-  constructor(private titleService: Title, private userService: UserService, private roomService: RoomService) {
+  constructor(private token: TokenStorageService, private titleService: Title, private userService: UserService, private roomService: RoomService) {
     this.lat = 4.6097100;
     this.lng = -74.0817500;
     this.zoom = 15;
@@ -38,6 +40,7 @@ export class GridviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getRooms();
+    this.currentUser = this.token.getUser();
     this.userService.getPublicContent().subscribe(
       data => {
         this.content = data;
@@ -63,7 +66,7 @@ export class GridviewComponent implements OnInit {
     const results: Room[] = [];
     for (const room of this.rooms){
       if (room.title.toLowerCase().indexOf(key.toLowerCase()) ! == -1) {
-        results.push(room); 
+        results.push(room);
       }
     }
     this.rooms = results;
