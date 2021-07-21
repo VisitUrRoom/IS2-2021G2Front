@@ -62,7 +62,9 @@
             <div class="col-md-12">
               <label for="username" class="form-label">Nombre de usuario</label>
               <div class="input-group has-validation">
-                <span class="input-group-text">@</span>
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
                 <input type="text" class="form-control" name="username" [(ngModel)]="form.username" minlength="3"
                   maxlength="20" #username="ngModel" id="username" placeholder="nombre de usuario" required>
                 <div class="alert-danger" *ngIf="username.errors && f.submitted">
@@ -75,7 +77,7 @@
 
             <div class="col-md-6">
               <label for="password" class="form-label">Contraseña</label>
-              <div class="input-group form-group pass_show">
+              <div class="input-group pass_show">
                 <input type="password" class="form-control pwds" name="password" [(ngModel)]="form.password"
                   minlength="5" #password="ngModel"  id="pwdId" pattern="[A-Za-z0-9]{5,99}" required>
                   <div id="cPwdValid" class="valid-feedback"></div>
@@ -90,18 +92,26 @@
 
             <div class="col-md-6">
               <label for="confpassword" class="form-label">Confirmar contraseña</label>
-              <div class="input-group form-group pass_show">
+              <div class="input-group pass_show">
                 <input type="password" class="form-control pwds" name="password2" placeholder="Confirmar contraseña" id="cPwdId" pattern="[A-Za-z0-9]{5,99}" required>
                 <div id="cPwdValid" class="valid-feedback"></div>
                 <div id="cPwdInvalid" class="invalid-feedback">La contraseña debe tener al menos 5 caracteres</div>
               </div>
             </div>
 
-            <div class="col-12">
+            <div class="col-md-6">
               <label for="email" class="form-label">Email</label>
               <input type="email" class="form-control" id="email" name="email" #email="ngModel" [(ngModel)]="form.email" placeholder="you@example.com" required>
               <div class="invalid-feedback">
                 Ingrese un correo electrónico valido.
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Teléfono Móvil</label>
+              <input type="text" class="form-control" id="phone" name="phone" #phone="ngModel" [(ngModel)]="form.phone" placeholder=" 3-- --- ---" required>
+              <div class="invalid-feedback">
+                Ingrese un número de teléfono valido.
               </div>
             </div>
 
@@ -136,7 +146,7 @@
           </div>
         </form>
         <hr class="my-3">
-        <div class="alert alert-success" role="alert" *ngIf="isSuccessful">
+        <div class="alert alert-success mt-2" role="alert" *ngIf="isSuccessful">
           <p>{{successfulMessage}}. Inicar sesión <a href="/login">Iniciar sesión</a></p>
           
         </div>

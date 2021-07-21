@@ -4,7 +4,7 @@
       <div class="col-12">
         <div id="conatiner-map">
           <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [styles]="styles" [clickableIcons]="false" [fitBounds]="true">
-            <agm-marker *ngFor="let room of rooms" [latitude]="locateCaster(room.lat)" [longitude]="locateCaster(room.lng)" [agmFitBounds]="true" [visible]="true"
+            <agm-marker *ngFor="let room of rooms" [latitude]="room.lat" [longitude]="room.lng" [agmFitBounds]="true" [visible]="true"
                         [iconUrl]="'../assets/img/AptMarker.svg'"
             >\
               <agm-info-window [disableAutoPan]="false">
@@ -22,7 +22,7 @@
 <div class="main-container section-padding" id="main-container">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-12 col-xs-12">
+      <div class="col-lg-8 col-sm-12 col-xs-12">
 
         <div class="product-filter">
 
@@ -56,7 +56,7 @@
               <div class="property-item">
                 <div class="item-thumb">
                   <a class="hover-effect">
-                    <!--                    <img class="img-fluid" src="{{room?.image}}" alt="">-->
+<!--                    <img class="img-fluid" src="{{room?.image}}" alt="">-->
                     <iframe  width="315" height="200" [src]="room?.image | safeUrl" frameborder="0" allowfullscreen allow="xr-spatial-tracking"></iframe>
                   </a>
                   <div class="label-inner">
@@ -102,8 +102,9 @@
             </div>
             <div class="modal-body">
               <ul class="list-group list-group-flush">
-                <!--                <a href=""><img src="{{knowRoom?.image}}" alt="" class="img-fluid"></a>-->
+<!--                <a href=""><img src="{{knowRoom?.image}}" alt="" class="img-fluid"></a>-->
                 <iframe  width="465" height="300" [src]="knowRoom?.image | safeUrl" frameborder="0" allowfullscreen allow="xr-spatial-tracking"></iframe>
+
                 <li class="list-group-item"><i class="fa fa-user float-right"></i>Nombre : {{knowRoom?.title}}</li>
                 <li class="list-group-item"><i class="fa fa-user float-right"></i>Tipo : En {{knowRoom?.tipo}}</li>
                 <li class="list-group-item"><i class="fa fa-map-marker float-right"></i>Ubicación : {{knowRoom?.direccion}}</li>
@@ -122,7 +123,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-12 col-xs-12">
+      <div class="col-lg-4 col-sm-12 col-xs-12">
 
         <div class="sidebar sticky right">
 

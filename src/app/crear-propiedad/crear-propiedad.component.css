@@ -1,0 +1,64 @@
+/* ::ng-deep .pac-container { position: fixed !important;}*/
+
+agm-map {
+  height: 600px;
+}
+.autocomplete-container {
+  padding: 1rem 0 1rem 0;
+  width: 50%;
+}
+
+::ng-deep .mat-form-field-required-marker {
+  display: none;
+}
+
+#remember {
+  padding: 10px 60px 10px;
+}
+
+#solicitar {
+  margin: 10px 10px 10px;
+}
+
+.titleline {
+  border-top: 3px solid rgb(177, 177, 177);
+}
+/*mat-google-maps-autocomplete ::ng-deep input {
+    height: 43.4375px;
+    border-bottom-width: 0.994318px;
+    border-left-width: 0.994318px;
+    border-right-width: 0.994318px;
+    border-top-width: 0.994318px;
+    box-sizing: border-box;
+    color: rgb(68, 74, 80);
+    font-family: Lato, sans-serif;
+    font-size: 14px;
+    font-stretch: 100%;
+    font-style: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    letter-spacing: normal;
+    line-height: 26px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+  
+  }*/
+
+.pac-container {
+  top: 40px !important;
+  left: 0px !important;
+}
+
+#inputContainer {
+  display: block;
+  width: 100%;
+  position: relative;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 0.34375em;
+}
