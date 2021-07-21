@@ -11,7 +11,6 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { ContactoComponent } from './contacto/contacto.component';
 
 import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component';
-import { CreateAptComponent } from './createapt/createapt.component';
 import { GridviewComponent } from './gridview/gridview.component';
 import { ScannerFormComponent } from './scannerform/scannerform.component';
 import { CrearPropiedadComponent } from './crear-propiedad/crear-propiedad.component';
@@ -25,7 +24,6 @@ const routes: Routes = [
       children: [
         { path: '', redirectTo:'home', pathMatch: 'full'},
         { path: 'home', component: HomeComponent },
-        { path: 'createapt', component: CreateAptComponent },
         { path: 'publicar-inmueble.html', component: CrearPropiedadComponent },
         { path: 'lista-de-inmuebles.html', component: GridviewComponent},
         { path: 'scannerform', component: ScannerFormComponent},

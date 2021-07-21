@@ -65,6 +65,7 @@ export class CrearPropiedadComponent implements OnInit {
       Validators.pattern(/^[A-Za-z0-9]{1,300}$/),
     ]),
     tipo: new FormControl('', Validators.required),
+
   });
 
   isSuccessful = false;
@@ -156,6 +157,7 @@ export class CrearPropiedadComponent implements OnInit {
       lng: this.longitude,
       direccion: '' + this.fijardireccion,
       image: fotos,
+      ownerUser: null,
     };
     this.roomService.addRooms(room).subscribe(data => {
       alert(this.successfulMessage);
@@ -165,7 +167,7 @@ export class CrearPropiedadComponent implements OnInit {
       //this.successfulMessage = data.message;
     },
     err => {
-      alert(err.error.message);  
+      alert(err.error.message);
       console.log(err.error);
       this.errorMessage = err.error.message;
       this.isSignUpFailed = true;

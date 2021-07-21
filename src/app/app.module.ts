@@ -21,7 +21,6 @@ import { SiteHeaderComponent } from './_layout/site-header/site-header.component
 import { SiteFooterComponent } from './_layout/site-footer/site-footer.component';
 import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component';
 import { AgmCoreModule } from '@agm/core';
-import { CreateAptComponent } from './createapt/createapt.component';
 import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
 import { MatCardModule } from '@angular/material/card';
 import { ExtendedModule } from '@angular/flex-layout';
@@ -50,7 +49,6 @@ import { IMaskModule } from 'angular-imask';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    CreateAptComponent,
     GridviewComponent,
     ScannerFormComponent,
     ProfileComponent,

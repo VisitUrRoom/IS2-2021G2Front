@@ -12,4 +12,6 @@ export interface Room {
     image : any;
     desctription : string;
     tipo: string;
+    ownerUser: any;
 }
+

@@ -1,4 +1,4 @@
-<section id="google-map-area">
+<section id="google-map-area" xmlns="http://www.w3.org/1999/html">
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
@@ -111,15 +111,12 @@
                 <li class="list-group-item"><i class="fa fa-money float-right"></i>Valor: {{knowRoom?.price | currency:"":"symbol"}}</li>
                 <li class="list-group-item"><i class="fa fa-phone float-right"></i>Area total : {{knowRoom?.superficie}}</li>
                 <li class="list-group-item"><i class="fa fa-book float-right"></i>Descripción : {{knowRoom?.desctription}}</li>
-<!--                <a href="https://wa.me/ + número prefijo país "sin signo +" + número de teléfono">Anchor text</a>-->
+                <li class="list-group-item text-center">
+                <a class="btn btn-outline-success" href="https://wa.me/57{{knowRoom?.ownerUser.phone}}?text=Estoy%20interesado%20en%20tu%20publicacion" target="_blank">
+                  <i class="fa fa-whatsapp fa-2x" aria-hidden="true">
+                  </i> Contacta al vendedor</a>
+                </li>
               </ul>
-              <div>
-                <ul class="social-links list-inline mb-0">
-                  <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Facebook"><i class="fa fa-facebook-f"></i></a></li>
-                  <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                  <li class="list-inline-item"><a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="" data-original-title="Skype"><i class="fa fa-skype"></i></a></li>
-                </ul>
-              </div>
             </div>
           </div>
         </div>

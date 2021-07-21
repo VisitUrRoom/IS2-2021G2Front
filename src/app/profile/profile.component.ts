@@ -10,14 +10,21 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  currentUser: any;
+  currentUser: any = false;
+  isLoggedIn = false;
   public rooms!: Room[];
   public editRoom!: Room;
   public deleteRoom!: Room;
+  public knowRoom!: Room;
 
   constructor(private token: TokenStorageService,  private roomService: RoomService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.token.getToken();
+
+    if (this.isLoggedIn) {
+      const currentUser = this.token.getUser();
+    }
     this.getRooms();
     this.currentUser = this.token.getUser();
   }
@@ -36,7 +43,7 @@ export class ProfileComponent implements OnInit {
     this.roomService.updateRoom(room).subscribe(
       (response: Room) =>{
         console.log(response);
-        this.getRooms(); 
+        this.getRooms();
       },
       (error: HttpErrorResponse) =>{
         alert(error.message);
@@ -48,7 +55,7 @@ export class ProfileComponent implements OnInit {
     this.roomService.deleteRoom(roomId).subscribe(
       (response: void) =>{
         console.log(response);
-        this.getRooms(); 
+        this.getRooms();
       },
       (error: HttpErrorResponse) =>{
         alert(error.message);
@@ -63,16 +70,20 @@ export class ProfileComponent implements OnInit {
     button.style.display = 'none';
     button.setAttribute('data-toggle','modal');
 
-  
+    if (mode === 'know'){
+      this.knowRoom = room;
+      button.setAttribute('data-target','#knowRoom');
+    }
+
     if (mode === 'edit'){
       this.editRoom = room;
-      button.setAttribute('data-target','#updateRoomModal'); 
+      button.setAttribute('data-target','#updateRoomModal');
     }
     if (mode === 'delete'){
       this.deleteRoom = room;
-      button.setAttribute('data-target','#deleteRoomModal'); 
+      button.setAttribute('data-target','#deleteRoomModal');
     }
-    
+
     container?.appendChild(button);
     button.click();
   }
