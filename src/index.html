@@ -35,9 +35,12 @@
   <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
   <link rel="stylesheet" id="colors" href="assets/css/colors/blue.css" type="text/css">
 
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body>
+<body class="mat-typography">
   <app-root></app-root>
 
   <script src="assets/js/form-validation.js"></script>
@@ -77,8 +80,17 @@
           $('.pwds').addClass('is-invalid')
         }
       });
+
+      jQuery("#inputContainer mat-form-field").on("click", function (event) {
+        jQuery(".pac-container").detach().appendTo($("#inputContainer"));
+        jQuery(this).off(event);
+      });
+
     });
+
   </script>
+
+
 
   <style>
     .confirmacion {

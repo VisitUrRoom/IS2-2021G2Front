@@ -10,6 +10,7 @@ export class RegisterComponent implements OnInit {
   form: any = {
     username: null,
     email: null,
+    phone: null,
     password: null,
     firstName: null,
 	  tipopersona:null,
@@ -29,9 +30,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { username, email, password, firstName, tipopersona, userid, address, city, neighborhood} = this.form;
+    const { username, email, phone, password, firstName, tipopersona, userid, address, city, neighborhood} = this.form;
 
-    this.authService.register(username, email, password, firstName, tipopersona, userid,  address, city, neighborhood).subscribe(
+    this.authService.register(username, email, phone, password, firstName, tipopersona, userid,  address, city, neighborhood).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

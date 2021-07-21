@@ -5,6 +5,7 @@ import {Location, Appearance, GermanAddress} from '@angular-material-extensions/
 //import {} from '@types/googlemaps';
 import PlaceResult = google.maps.places.PlaceResult;
 import {Title} from '@angular/platform-browser';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-scannerform',

@@ -22,19 +22,19 @@
 
             <div class="header clearfix">
               <h2>{{ currentUser.firstName}}</h2>
-              <h4>Membresía:
+              <h4>Tipo de usuario:
 
                 <span>
                   <span *ngFor="let role of currentUser.roles">
-                    <div [ngSwitch]="'{{role}}'">
+                    <div [ngSwitch]="role">
                       <div *ngSwitchCase="'ROLE_ADMIN'">
-                        Admin
+                        ADMINISTRADOR
                       </div>
                       <div *ngSwitchCase="'ROLE_USERPRIME'">
-                        Usuario de pago
+                        PREMIUM
                       </div>
                       <div *ngSwitchDefault>
-                        Usuario gratis
+                        GRATIS
                       </div>
                       </div>
                     </span>
@@ -61,7 +61,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="submit-property.html">
+                  <a href="publicar-inmueble.html">
                     <i class="lni-plus"></i>Publicar nueva Propiedad
                   </a>
                 </li>
@@ -82,22 +82,22 @@
               <div class="table-responsive">
                 <table  class="table table-striped">
                   <thead>
-                    <tr>
-                      <th>Título</th>
-                      <th>Precio</th>
-                      <th>Area</th>
-                      <th>Editar</th>
-                      <th>Eliminar</th>
-                    </tr>
+                  <tr>
+                    <th>Título</th>
+                    <th>Precio</th>
+                    <th>Area</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                  </tr>
                   </thead>
                   <tbody *ngFor="let room of rooms">
-                    <tr>
-                      <td>{{room?.title}}</td>
-                      <td>{{room?.price | currency:"":"symbol"}}</td>
-                      <td class="rating"><span>{{room?.area}} mts</span></td>
-                      <td (click)="onOpenModal(room, 'edit')"class="edit"><a href="#"><span class="lni-pencil"></span></a></td>
-                      <td (click)="onOpenModal(room, 'delete')"class="delete"><a href="#"><span class="lni lni-close"></span></a></td>
-                    </tr>
+                  <tr>
+                    <td>{{room?.title}}</td>
+                    <td>{{room?.price | currency:"":"symbol"}}</td>
+                    <td class="rating"><span>{{room?.area}} mts</span></td>
+                    <td (click)="onOpenModal(room, 'edit')"class="edit"><a href="#"><span class="lni-pencil"></span></a></td>
+                    <td (click)="onOpenModal(room, 'delete')"class="delete"><a href="#"><span class="lni lni-close"></span></a></td>
+                  </tr>
 
                   </tbody>
                 </table>
@@ -169,80 +169,80 @@
     </div>
   </section>
 
-   <!-- edit room Modal -->
-   <div class="modal fade" id="updateRoomModal" tabindex="-1" role="dialog" aria-labelledby="roomEditModalLabel" aria-hidden="true">
+  <!-- edit room Modal -->
+  <div class="modal fade" id="updateRoomModal" tabindex="-1" role="dialog" aria-labelledby="roomEditModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="updateEmployeeModalLabel">Editar Habitación " {{editRoom?.title}} "</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateEmployeeModalLabel">Editar Habitación " {{editRoom?.title}} "</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-            </button>
-         </div>
-         <div class="modal-body">
-            <form #editForm="ngForm">
-              <div class="form-group">
-                <label for="title">Nombre</label>
-                <input type="text" ngModel="{{editRoom?.title}}" name="title" class="form-control" id="title" placeholder="Título" required>
-             </div>
-             <input type="hidden" ngModel="{{editRoom?.id}}" name="id" class="form-control" id="id" placeholder="Nombre">
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #editForm="ngForm">
+            <div class="form-group">
+              <label for="title">Nombre</label>
+              <input type="text" ngModel="{{editRoom?.title}}" name="title" class="form-control" id="title" placeholder="Título" required>
+            </div>
+            <input type="hidden" ngModel="{{editRoom?.id}}" name="id" class="form-control" id="id" placeholder="Nombre">
 
 
-              <div class="form-group">
-                <label for="tipo">Tipo</label>
-                <input type="text" ngModel="{{editRoom?.tipo}}" name="tipo" class="form-control" id="tipo" placeholder="Arriendo o Venta" required>
-               </div>
-               <div class="form-group">
-                <label for="superficie">Superficie</label>
-                <input type="text" ngModel="{{editRoom?.superficie}}" name="superficie" class="form-control" id="superficie" placeholder="Superficie" required>
-               </div>
-               <div class="form-group">
-                <label for="area">Area</label>
-                <input type="text" ngModel="{{editRoom?.area}}" name="area" class="form-control" id="area" placeholder="area" required>
-               </div>
-               <div class="form-group">
-                <label for="price">Precio</label>
-                <input type="text" ngModel="{{editRoom?.price}}" name="price" class="form-control" id="price" placeholder="price" required>
-               </div>
-               <div class="form-group">
-                <label for="image">URL Imagen</label>
-                <input type="text" ngModel="{{editRoom?.image}}" name="image" class="form-control" id="image" placeholder="image" required>
-               </div>
-             <div class="form-group">
+            <div class="form-group">
+              <label for="tipo">Tipo</label>
+              <input type="text" ngModel="{{editRoom?.tipo}}" name="tipo" class="form-control" id="tipo" placeholder="Arriendo o Venta" required>
+            </div>
+            <div class="form-group">
+              <label for="superficie">Superficie</label>
+              <input type="text" ngModel="{{editRoom?.superficie}}" name="superficie" class="form-control" id="superficie" placeholder="Superficie" required>
+            </div>
+            <div class="form-group">
+              <label for="area">Area</label>
+              <input type="text" ngModel="{{editRoom?.area}}" name="area" class="form-control" id="area" placeholder="area" required>
+            </div>
+            <div class="form-group">
+              <label for="price">Precio</label>
+              <input type="text" ngModel="{{editRoom?.price}}" name="price" class="form-control" id="price" placeholder="price" required>
+            </div>
+            <div class="form-group">
+              <label for="image">URL Imagen</label>
+              <input type="text" ngModel="{{editRoom?.image}}" name="image" class="form-control" id="image" placeholder="image" required>
+            </div>
+            <div class="form-group">
               <label for="desctription">Descripción</label>
               <input type="text" ngModel="{{editRoom?.desctription}}" name="desctription" class="form-control" id="desctription" placeholder="Descripción" required>
-             </div>
-               <div class="modal-footer">
-                  <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cerrar</button>
-                  <button (click)="onUpdateRoom(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Guardar cambios</button>
-               </div>
-            </form>
-         </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cerrar</button>
+              <button (click)="onUpdateRoom(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Guardar cambios</button>
+            </div>
+          </form>
+        </div>
       </div>
-   </div>
+    </div>
   </div>
 
 
-    <!-- delete room Modal -->
-    <div class="modal fade" id="deleteRoomModal" tabindex="-1" aria-labelledby="deleteRoomModalLabel" aria-hidden="true">
-       <div class="modal-dialog" role="document">
-          <div class="modal-content">
-             <div class="modal-header">
-             <h5 class="modal-title" id="deleteModelLabel">Eliminar una Habitación</h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-             </button>
+  <!-- delete room Modal -->
+  <div class="modal fade" id="deleteRoomModal" tabindex="-1" aria-labelledby="deleteRoomModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModelLabel">Eliminar una Habitación</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>¿ Estas seguro de querer borrar " {{deleteRoom?.title}} "?</p>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            <button (click)="onDeleteRoom(deleteRoom?.id!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
           </div>
-          <div class="modal-body">
-             <p>¿ Estas seguro de querer borrar " {{deleteRoom?.title}} "?</p>
-             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button (click)="onDeleteRoom(deleteRoom?.id!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
-             </div>
-          </div>
-       </div>
+        </div>
+      </div>
     </div>
-    </div>
+  </div>
 
 
 
@@ -251,19 +251,6 @@
   <a href="#" class="back-to-top">
     <i class="lni-chevron-up"></i>
   </a>
-
-
-
-
-  <div class="container-fluid bg-light py-5">
-    <div class="col-md-6 m-auto text-center">
-      <h1 class="h1"> Hola, {{ currentUser.username }}</h1>
-      <p>
-        Proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet.
-      </p>
-    </div>
-  </div>
 </div>
 
 <ng-template #loggedOut>

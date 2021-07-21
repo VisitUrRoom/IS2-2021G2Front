@@ -21,15 +21,27 @@ import { SiteHeaderComponent } from './_layout/site-header/site-header.component
 import { SiteFooterComponent } from './_layout/site-footer/site-footer.component';
 import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component';
 import { AgmCoreModule } from '@agm/core';
-import {CreateAptComponent} from "./createapt/createapt.component";
-import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
-import {ExtendedModule} from "@angular/flex-layout";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {GridviewComponent} from "./gridview/gridview.component";
+import { CreateAptComponent } from './createapt/createapt.component';
+import { MatGoogleMapsAutocompleteModule } from '@angular-material-extensions/google-maps-autocomplete';
+import { MatCardModule } from '@angular/material/card';
+import { ExtendedModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GridviewComponent } from './gridview/gridview.component';
 import { ScannerFormComponent } from './scannerform/scannerform.component';
 import { RoomService } from './_services/room-service.service';
 import { SafeUrlPipe } from './_helpers/safe-url.pipe';
-
+import { CrearPropiedadComponent } from './crear-propiedad/crear-propiedad.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatTabsModule } from '@angular/material/tabs';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { environment } from '../environments/environment';
+import { MarkdownModule } from 'ngx-markdown';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { IMaskModule } from 'angular-imask';
 
 
 @NgModule({
@@ -50,6 +62,7 @@ import { SafeUrlPipe } from './_helpers/safe-url.pipe';
     SiteFooterComponent,
     SiteLayoutComponent,
     SafeUrlPipe,
+    CrearPropiedadComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,12 +73,30 @@ import { SafeUrlPipe } from './_helpers/safe-url.pipe';
     HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBHNb4aI9XNZfT0SAPSe1jo9XvBTPMXIoU',
-      libraries: ['places']
+      libraries: ['places'],
+      region: 'co',
     }),
     MatGoogleMapsAutocompleteModule,
-    ExtendedModule
+    ExtendedModule,
+    MatCardModule,
+
+    MatButtonToggleModule,
+    MatExpansionModule,
+    MatInputModule,
+    MatRadioModule,
+    MatTabsModule,
+    FlexLayoutModule,
+    //environment,
+    MarkdownModule,
+    RouterModule,
+    CommonModule,
+    IMaskModule,
   ],
-  providers: [RoomService, authInterceptorProviders, { provide: APP_BASE_HREF, useValue: '' }],
-  bootstrap: [AppComponent]
+  providers: [
+    RoomService,
+    authInterceptorProviders,
+    { provide: APP_BASE_HREF, useValue: '' },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
