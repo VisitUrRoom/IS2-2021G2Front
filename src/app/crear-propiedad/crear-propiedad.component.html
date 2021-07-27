@@ -108,7 +108,11 @@
         <div class="form-row">
           <div class="col-12">
             <div class="form-group">
+<<<<<<< Updated upstream
               <label for="fotos" class="form-label">Escribe la url de las fotos</label>
+=======
+              <label for="fotos" class="form-label">Escribe la URL de las fotos</label>
+>>>>>>> Stashed changes
               <textarea formControlName="fotos" type="text" class="form-control" id="fotos" name="fotos" placeholder=""
                 value="https://my.matterport.com/show/?m=hxxiupwiN4C" pattern="[A-Za-z0-9]{1,300}" required></textarea>
             </div>
@@ -118,7 +122,7 @@
         <div class="form-row">
           <div class="col-12">
             <div class="form-group">
-              <label for="description" class="form-label">Descripcion</label>
+              <label for="description" class="form-label">Descripción</label>
               <textarea formControlName="descripcion" type="text" class="form-control" id="description"
                 name="description" placeholder="" value="" pattern="[A-Za-z0-9]{1,250}" required></textarea>
               <div class="invalid-feedback">
@@ -129,12 +133,17 @@
         </div>
         <div class="form-row">
           <hr class="my-3">
+<<<<<<< Updated upstream
             <button (click)="crearInmueble(); resetForm()" class="w-100 btn btn-primary btn-lg" type="submit" id="submitBtn">Crear Inmueble</button>
+=======
+          <button (click)="crearInmueble(); resetForm()" class="w-100 btn btn-primary btn-lg" type="submit" id="submitBtn">Crear
+            Inmueble</button>
+>>>>>>> Stashed changes
         </div>
 
 
         <div class="alert alert-success" role="alert" *ngIf="isSuccessful">
-          <p>{{successfulMessage}}</p>
+          <p> {{successfulMessage}}</p>
         </div>
         <div class="alert alert-danger" role="alert" *ngIf="isSignUpFailed">
           <p>{{errorMessage}}</p>

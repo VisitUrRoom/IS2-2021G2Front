@@ -95,7 +95,7 @@ export class CrearPropiedadComponent implements OnInit {
 
     this.setCurrentPosition();
 
-    
+
   }
 
   private setCurrentPosition() {
@@ -121,6 +121,11 @@ export class CrearPropiedadComponent implements OnInit {
 
   onGermanAddressMapped($event: GermanAddress) {
     console.log('onGermanAddressMapped', $event);
+  }
+
+  resetForm(value: any = undefined): void {
+    this.roomForm.reset(value);
+
   }
 
   crearInmueble(): void {
@@ -162,9 +167,5 @@ export class CrearPropiedadComponent implements OnInit {
       this.errorMessage = err.error.message;
       this.isSignUpFailed = true;
     });
-  }
-  resetForm(value: any = undefined): void {
-    this.roomForm.reset(value);
-   
   }
 }

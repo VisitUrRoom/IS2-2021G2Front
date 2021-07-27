@@ -23,7 +23,11 @@
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4" src="/assets/img/favicon.png" alt="" width="72" >
       <h2>Registro de usuarios</h2>
+<<<<<<< Updated upstream
       <p class="lead">Regístrate en nuestra plataforma para poder publicar rooms.</p>
+=======
+      <p class="lead">Registrate en nuestra plataforma para poder publicar rooms.</p>
+>>>>>>> Stashed changes
     </div>
 
     <div class="row g-5">
@@ -76,14 +80,14 @@
             </div>
 
             <div class="col-md-6">
-              <label for="password" class="form-label">Contraseña</label>
+              <label for="cPwdValid" class="form-label">Contraseña</label>
               <div class="input-group pass_show">
                 <input type="password" class="form-control pwds" name="password" [(ngModel)]="form.password"
                   minlength="5" #password="ngModel"  id="pwdId" pattern="[A-Za-z0-9]{5,99}" required>
                   <div id="cPwdValid" class="valid-feedback"></div>
                   <div id="cPwdInvalid" class="invalid-feedback">Ingresa una contraseña</div>
                 <div class="alert-danger" *ngIf="password.errors && f.submitted">
-                  
+
                   <div *ngIf="password.errors.required">La contraseña es requerida</div>
                   <div *ngIf="password.errors.minlength">La contraseña debe tener al menos 5 caracteres</div>
                 </div>
@@ -91,7 +95,7 @@
             </div>
 
             <div class="col-md-6">
-              <label for="confpassword" class="form-label">Confirmar contraseña</label>
+              <label for="cPwdInvalid" class="form-label">Confirmar contraseña</label>
               <div class="input-group pass_show">
                 <input type="password" class="form-control pwds" name="password2" placeholder="Confirmar contraseña" id="cPwdId" pattern="[A-Za-z0-9]{5,99}" required>
                 <div id="cPwdValid" class="valid-feedback"></div>
@@ -148,12 +152,12 @@
         <hr class="my-3">
         <div class="alert alert-success mt-2" role="alert" *ngIf="isSuccessful">
           <p>{{successfulMessage}}. Inicar sesión <a href="/login">Iniciar sesión</a></p>
-          
+
         </div>
         <div class="alert alert-danger" role="alert" *ngIf="isSignUpFailed">
           <p>{{errorMessage}}</p>
         </div>
-        
+
       </div>
     </div>
   </main>
