@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
 import {styles} from "../../assets/ts/stylemap";
 import {Location, Appearance, GermanAddress} from '@angular-material-extensions/google-maps-autocomplete';
 //import {} from '@types/googlemaps';
@@ -32,7 +31,7 @@ export class GridviewComponent implements OnInit {
   public styles = styles;
   //public selectedAddress: PlaceResult;
 
-  constructor(private token: TokenStorageService, private titleService: Title, private userService: UserService, private roomService: RoomService) {
+  constructor(private token: TokenStorageService, private titleService: Title, private roomService: RoomService) {
     this.lat = 4.6097100;
     this.lng = -74.0817500;
     this.zoom = 15;
@@ -41,14 +40,6 @@ export class GridviewComponent implements OnInit {
   ngOnInit(): void {
     this.getRooms();
     this.currentUser = this.token.getUser();
-    this.userService.getPublicContent().subscribe(
-      data => {
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
   }
 
   public getRooms(): void{

@@ -1,0 +1,28 @@
+.hero {
+    position: relative; 
+}
+
+.hero:before {    
+      content: "";
+      background-image: url(../../assets/img/business/casa3.jpg);
+      background-size: cover;
+      background-position: bottom center;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.50;
+}
+
+.hero > div {
+  position: relative;
+}
+
+.hero2{
+    background: rgba(0, 0, 0, 1);
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}

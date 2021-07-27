@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
 import {styles} from "../../assets/ts/stylemap";
 import {Location, Appearance, GermanAddress} from '@angular-material-extensions/google-maps-autocomplete';
 //import {} from '@types/googlemaps';
@@ -22,7 +21,7 @@ export class ScannerFormComponent implements OnInit {
   public styles = styles;
   //public selectedAddress: PlaceResult;
 
-  constructor(private titleService: Title, private userService: UserService) {
+  constructor(private titleService: Title) {
     this.lat = 4.6097100;
     this.lng = -74.0817500;
     this.zoom = 20;
@@ -32,15 +31,6 @@ export class ScannerFormComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle('Home | @angular-material-extensions/google-maps-autocomplete');
 
-    this.userService.getPublicContent().subscribe(
-      data => {
-        this.content = data;
-      },
-      err => {
-        console.log(err)
-        this.content = JSON.parse(err.error).message;
-      }
-    );
   }
   private setCurrentPosition() {
     if ('geolocation' in navigator) {

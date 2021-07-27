@@ -88,4 +88,9 @@ export class ProfileComponent implements OnInit {
     button.click();
   }
 
+  logout(): void {
+    this.token.signOut();
+    window.location.reload();
+  }
+
 }

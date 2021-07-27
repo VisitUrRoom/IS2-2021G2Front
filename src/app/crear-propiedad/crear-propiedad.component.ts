@@ -11,7 +11,6 @@ import { styles } from '../../assets/ts/stylemap';
 import { RoomService } from '../_services/room-service.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Room } from '../gridview/room';
-import { UserService } from '../_services/user.service';
 import * as jQuery from 'jquery';
 import { TokenStorageService } from '../_services/token-storage.service';
 
@@ -75,7 +74,6 @@ export class CrearPropiedadComponent implements OnInit {
 
   constructor(
     private titleService: Title,
-    private userService: UserService,
     private roomService: RoomService,
     private tokenStorageService: TokenStorageService
   ) {}
@@ -97,15 +95,7 @@ export class CrearPropiedadComponent implements OnInit {
 
     this.setCurrentPosition();
 
-    this.userService.getPublicContent().subscribe(
-      (data) => {
-        this.content = data;
-      },
-      (err) => {
-        console.log(err);
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+    
   }
 
   private setCurrentPosition() {
@@ -172,5 +162,9 @@ export class CrearPropiedadComponent implements OnInit {
       this.errorMessage = err.error.message;
       this.isSignUpFailed = true;
     });
+  }
+  resetForm(value: any = undefined): void {
+    this.roomForm.reset(value);
+   
   }
 }

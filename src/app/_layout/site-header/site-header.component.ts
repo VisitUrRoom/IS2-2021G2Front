@@ -12,8 +12,8 @@ export class SiteHeaderComponent implements OnInit {
 
 private roles: string[] = [];
 isLoggedIn = false;
-showAdminBoard = false;
-showModeratorBoard = false;
+//showAdminBoard = false;
+//showModeratorBoard = false;
 username?: string;
 
 constructor(private tokenStorageService: TokenStorageService) { }
@@ -25,8 +25,8 @@ ngOnInit(): void {
     const user = this.tokenStorageService.getUser();
     this.roles = user.roles;
 
-    this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-    this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+    //this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+    //this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
     this.username = user.username;
   }

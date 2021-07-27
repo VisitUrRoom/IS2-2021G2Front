@@ -4348,3 +4348,10 @@ textarea {
   color: #fff;
   border-color: #fff;
 }
+
+
+.wb-title-sub {
+  font-size: 22px !important;
+  margin-bottom: 5px;
+  line-height: 36px;
+}

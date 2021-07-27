@@ -30,14 +30,14 @@ export class RoomService {
       );
   }
   public getRooms(): Observable<Room[]> {
-    return this.http.get<Room[]>(`${this.apiServerUrl}/room/all`);
+    return this.http.get<Room[]>(`${this.apiServerUrl}/room/all`, httpOptions);
   }
   public updateRoom(room: Room): Observable<Room> {
     return this.http.put<Room>(`${this.apiServerUrl}/room/update`, room, httpOptions);
   }
 
   public deleteRoom(roomId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/room/delete/${roomId}`);
+    return this.http.delete<void>(`${this.apiServerUrl}/room/delete/${roomId}`, httpOptions);
   }
 
 

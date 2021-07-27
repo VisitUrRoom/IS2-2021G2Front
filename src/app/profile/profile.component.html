@@ -25,20 +25,20 @@
                 <h4>Tipo de usuario:
 
                   <span>
-                  <span *ngFor="let role of currentUser.roles">
-                    <div [ngSwitch]="role">
-                      <div *ngSwitchCase="'ROLE_ADMIN'">
-                        ADMINISTRADOR
-                      </div>
-                      <div *ngSwitchCase="'ROLE_USERPRIME'">
-                        PREMIUM
-                      </div>
-                      <div *ngSwitchDefault>
-                        GRATIS
-                      </div>
+                    <span *ngFor="let role of currentUser.roles">
+                      <div [ngSwitch]="role">
+                        <div *ngSwitchCase="'ROLE_ADMIN'">
+                          ADMINISTRADOR
+                        </div>
+                        <div *ngSwitchCase="'ROLE_USERPRIME'">
+                          PREMIUM
+                        </div>
+                        <div *ngSwitchDefault>
+                          GRATIS
+                        </div>
                       </div>
                     </span>
-                </span>
+                  </span>
                 </h4>
                 <img src="assets/img/agente1.jpg" alt="avatar" class="img-fluid profile-img">
               </div>
@@ -51,7 +51,7 @@
                     </a>
                   </li>
                   <li>
-                    <a routerLink="/profile">
+                    <a routerLink="/profile.html">
                       <i class="lni-user"></i>Perfil
                     </a>
                   </li>
@@ -66,7 +66,7 @@
                     </a>
                   </li>
                   <li>
-                    <a routerLink="/home">
+                    <a href (click)="logout()">
                       <i class="lni-logout"></i>Cerrar sesión
                     </a>
                   </li>
@@ -80,23 +80,25 @@
               <h4 class="title">Gestor de Publicaciones </h4>
               <div class="section-body listing-table">
                 <div class="table-responsive">
-                  <table  class="table table-striped">
+                  <table class="table table-striped">
                     <thead>
-                    <tr>
-                      <th>Título</th>
-                      <th>Precio</th>
-                      <th>Area</th>
-                      <th>Editar</th>
-                      <th>Eliminar</th>
-                    </tr>
+                      <tr>
+                        <th>Título</th>
+                        <th>Precio</th>
+                        <th>Area</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                      </tr>
                     </thead>
                     <tbody *ngFor="let room of rooms">
                       <tr *ngIf="room?.ownerUser.id == currentUser.id">
                         <td>{{room?.title}}</td>
                         <td>{{room?.price | currency:"":"symbol"}}</td>
                         <td class="rating"><span>{{room?.area}} mts</span></td>
-                        <td (click)="onOpenModal(room, 'edit')"class="edit"><a href="#"><span class="lni-pencil"></span></a></td>
-                        <td (click)="onOpenModal(room, 'delete')"class="delete"><a href="#"><span class="lni lni-close"></span></a></td>
+                        <td (click)="onOpenModal(room, 'edit')" class="edit"><a href="#"><span
+                              class="lni-pencil"></span></a></td>
+                        <td (click)="onOpenModal(room, 'delete')" class="delete"><a href="#"><span
+                              class="lni lni-close"></span></a></td>
                       </tr>
                     </tbody>
                   </table>
@@ -114,13 +116,15 @@
                     <div class="col-sm-12 col-12">
                       <div class="form-group">
                         <label>Nombre y apellido</label>
-                        <input type="text" class="form-control" value="{{ currentUser.firstName}}" placeholder="Enter your First name">
+                        <input type="text" class="form-control" value="{{ currentUser.firstName}}"
+                          placeholder="Enter your First name">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Email</label>
-                        <input type="text" class="form-control" value="{{ currentUser.email }}" placeholder="Ex: example@domain.com">
+                        <input type="text" class="form-control" value="{{ currentUser.email }}"
+                          placeholder="Ex: example@domain.com">
                       </div>
                     </div>
                     <div class="col-sm-6">
@@ -132,7 +136,8 @@
                     <div class="col-lg-12">
                       <div class="form-group">
                         <label>Dirección</label>
-                        <textarea name="address" class="form-control" value="{{ currentUser.address }}"placeholder="Escribe una dirección"></textarea>
+                        <textarea name="address" class="form-control" value="{{ currentUser.address }}"
+                          placeholder="Escribe una dirección"></textarea>
                       </div>
                     </div>
                     <div class="col-lg-12">
@@ -169,7 +174,8 @@
     </section>
 
     <!-- edit room Modal -->
-    <div class="modal fade" id="updateRoomModal" tabindex="-1" role="dialog" aria-labelledby="roomEditModalLabel" aria-hidden="true">
+    <div class="modal fade" id="updateRoomModal" tabindex="-1" role="dialog" aria-labelledby="roomEditModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -182,38 +188,51 @@
             <form #editForm="ngForm">
               <div class="form-group">
                 <label for="title">Nombre</label>
-                <input type="text" ngModel="{{editRoom?.title}}" name="title" class="form-control" id="title" placeholder="Título" required>
+                <input type="text" ngModel="{{editRoom?.title}}" name="title" class="form-control" id="title"
+                  placeholder="Título" required>
               </div>
-              <input type="hidden" ngModel="{{editRoom?.id}}" name="id" class="form-control" id="id" placeholder="Nombre">
+              <input type="hidden" ngModel="{{editRoom?.id}}" name="id" class="form-control" id="id">
+              <input type="hidden" ngModel="{{editRoom?.direccion}}" name="direccion" class="form-control" id="direccion">
+              <input type="hidden" ngModel="{{editRoom?.lat}}" name="lat" class="form-control" id="lat">
+              <input type="hidden" ngModel="{{editRoom?.lng}}" name="lng" class="form-control" id="lng">
+              <input type="hidden" ngModel="{{editRoom?.ownerUser.id}}" name="ownerUser" class="form-control" id="ownerUser">
 
 
               <div class="form-group">
                 <label for="tipo">Tipo</label>
-                <input type="text" ngModel="{{editRoom?.tipo}}" name="tipo" class="form-control" id="tipo" placeholder="Arriendo o Venta" required>
+                <input type="text" ngModel="{{editRoom?.tipo}}" name="tipo" class="form-control" id="tipo"
+                  placeholder="Arriendo o Venta" required>
               </div>
               <div class="form-group">
                 <label for="superficie">Superficie</label>
-                <input type="text" ngModel="{{editRoom?.superficie}}" name="superficie" class="form-control" id="superficie" placeholder="Superficie" required>
+                <input type="text" ngModel="{{editRoom?.superficie}}" name="superficie" class="form-control"
+                  id="superficie" placeholder="Superficie" required>
               </div>
               <div class="form-group">
                 <label for="area">Area</label>
-                <input type="text" ngModel="{{editRoom?.area}}" name="area" class="form-control" id="area" placeholder="area" required>
+                <input type="text" ngModel="{{editRoom?.area}}" name="area" class="form-control" id="area"
+                  placeholder="area" required>
               </div>
               <div class="form-group">
                 <label for="price">Precio</label>
-                <input type="text" ngModel="{{editRoom?.price}}" name="price" class="form-control" id="price" placeholder="price" required>
+                <input type="text" ngModel="{{editRoom?.price}}" name="price" class="form-control" id="price"
+                  placeholder="price" required>
               </div>
               <div class="form-group">
                 <label for="image">URL Imagen</label>
-                <input type="text" ngModel="{{editRoom?.image}}" name="image" class="form-control" id="image" placeholder="image" required>
+                <input type="text" ngModel="{{editRoom?.image}}" name="image" class="form-control" id="image"
+                  placeholder="image" required>
               </div>
               <div class="form-group">
                 <label for="desctription">Descripción</label>
-                <input type="text" ngModel="{{editRoom?.desctription}}" name="desctription" class="form-control" id="desctription" placeholder="Descripción" required>
+                <input type="text" ngModel="{{editRoom?.desctription}}" name="desctription" class="form-control"
+                  id="desctription" placeholder="Descripción" required>
               </div>
               <div class="modal-footer">
+
                 <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Cerrar</button>
-                <button (click)="onUpdateRoom(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Guardar cambios</button>
+                <button (click)="onUpdateRoom(editForm.value)" data-dismiss="modal" class="btn btn-primary">Guardar
+                  cambios</button>
               </div>
             </form>
           </div>
@@ -223,7 +242,8 @@
 
 
     <!-- delete room Modal -->
-    <div class="modal fade" id="deleteRoomModal" tabindex="-1" aria-labelledby="deleteRoomModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteRoomModal" tabindex="-1" aria-labelledby="deleteRoomModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
